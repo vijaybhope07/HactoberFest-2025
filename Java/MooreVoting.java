@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class MooreVoting {
 
     public static int findCandidate(int[] nums) {
