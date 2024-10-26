@@ -22,8 +22,7 @@ int main()
     int target = 6;
     int ind = binarySearch(a, target);
     if (ind == -1) cout << "The target is not present." << endl;
-    else cout << "The target is at index: "
-                  << ind << endl;
+    else cout << "The target is at index: " << ind << endl;
     return 0;
 }
 
