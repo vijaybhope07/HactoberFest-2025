@@ -14,19 +14,32 @@ public class ArmstrongNumberUsingWhile {
 
 		//Helps to prevent altering the original value
 		Temp = Number;
+		/*
+		 * The 'Times' variable is used to store the number of digits in the number,
+		 * which can then be used to check for Armstrong Number
+		 */
 		while (Temp != 0) {
 			Times = Times + 1;
 			Temp = Temp / 10;
-		   }
-		   
+		}
+
 		Temp = Number;
+
+		/*
+		 * The 'Sum' is calculated by adding each digit of the number raised to a power
+		 * equal to the number of digits in the number, i.e. the 'Times' value
+		 */
 		while( Temp > 0)  {
 			Reminder = Temp %10;
 		    Sum = Sum + Math.pow(Reminder, Times);
 		    Temp = Temp /10;
-		   }
+		}
 		System.out.format("\n Sum of entered number is = %.2f", Sum);
 		
+		/*
+		 * If the calculated value of 'Sum' is equal to the original number, then the number is
+		 * Armstrong, otherwise it is not
+		*/
 		if (Sum == Number) {
 			System.out.format("\n% d is a Armstrong Number", Number);
 		}
