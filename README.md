@@ -3,10 +3,10 @@
   <img src="https://github.com/user-attachments/assets/2182ff3b-87ae-4526-9318-099df3eb31f3" alt="Hacktoberfest Banner" width="600">
 </p>
 
-  # 🎉 Welcome to Hacktoberfest 2024! 🚀
+  # 🎉 Welcome to Hacktoberfest 2025! 🚀
 
   [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
-  [![Hacktoberfest](https://img.shields.io/badge/Celebrate-Hacktoberfest%202024-blueviolet)](https://hacktoberfest.com/)
+  [![Hacktoberfest](https://img.shields.io/badge/Celebrate-Hacktoberfest%202025-blueviolet)](https://hacktoberfest.com/)
 </div>
 
 
@@ -16,13 +16,13 @@ Hacktoberfest is a month-long celebration of open source software run by Digital
 
 
 ### 📅 Key Dates
-- **Preparation**: September 2024
-- **Event Duration**: October 1 - 31, 2024
-- **Wrap-up Session**: October 31, 2024
+- **Preparation**: September 2025
+- **Event Duration**: October 1 - 31, 2025
+- **Wrap-up Session**: October 31, 2025
 
 ## 🚀 How to Participate
 
-1. **Register**: Sign up at [hacktoberfest.com](https://hacktoberfest.com) starting September 2024.
+1. **Register**: Sign up at [hacktoberfest.com](https://hacktoberfest.com) starting September 2025.
 2. **Contribute**: Make four valid pull/merge requests to participating projects on GitHub or GitLab.
 3. **Learn**: Engage with the community and improve your skills.
 4. **Earn**: Receive a digital badge that levels up with each accepted contribution.
@@ -30,7 +30,7 @@ Hacktoberfest is a month-long celebration of open source software run by Digital
 
 ## 🎨 This Year's Theme
 
-Hacktoberfest 2024 focuses on quality contributions that make a real impact. It's not just about quantity; it's about meaningful participation in the open-source community.
+Hacktoberfest 2025 focuses on quality contributions that make a real impact. It's not just about quantity; it's about meaningful participation in the open-source community.
 
 ## 💻 How to Contribute to This Repository
 
@@ -66,7 +66,7 @@ Join virtual and in-person events worldwide:
 
 - **Kickoff Event**: Virtual session hosted by DigitalOcean.
 - **Bengaluru Meetup**: In-person gathering for developers in India.
-- **Wrap-up Session**: Virtual celebration on October 31, 2024.
+- **Wrap-up Session**: Virtual celebration on October 31, 2025.
 
 ## 🤝 Sponsors
 
@@ -95,13 +95,13 @@ A big thank you to our sponsors for supporting open source:
 
 ## 📣 Spread the Word
 
-Help us make Hacktoberfest 2024 the biggest yet! Share your participation on social media using #Hacktoberfest2024.
+Help us make Hacktoberfest 2025 the biggest yet! Share your participation on social media using #Hacktoberfest2025.
 
 <div align="center">
 
 ### Ready to dive in? Let's code for a better digital world! 🌍💻
 
-[<img src="https://img.shields.io/badge/Register_Now-Hacktoberfest_2024-blueviolet?style=for-the-badge&logo=digitalocean&logoColor=white">](https://hacktoberfest.com)
+[<img src="https://img.shields.io/badge/Register_Now-Hacktoberfest_2025-blueviolet?style=for-the-badge&logo=digitalocean&logoColor=white">](https://hacktoberfest.com)
 
 
 </div>
