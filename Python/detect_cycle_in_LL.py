@@ -54,4 +54,3 @@ if __name__ == "__main__":
         print("Cycle detected")
     else:
         print("No cycle detected")
-        
