@@ -8,7 +8,7 @@ const recentYouTubeViews = [2300, 453, 5222, 989, 6733, 7402, 2789];
 function mean(viewsArray) {
   let totalViews = 0;
 
-  for(let i = 0; i < viewsArray.length; i++) {
+  for (let i = 0; i < viewsArray.length; i++) {
     totalViews += viewsArray[i];
   }
 
@@ -16,9 +16,11 @@ function mean(viewsArray) {
 }
 
 function median(viewsArray) {
-  const sortedStats = viewsArray.sort(function(a, b) { return a - b; });
+  const sortedStats = viewsArray.sort(function (a, b) {
+    return a - b;
+  });
   const middleIndex = Math.floor(viewsArray.length / 2);
-  
+
   return sortedStats[middleIndex];
 }
 

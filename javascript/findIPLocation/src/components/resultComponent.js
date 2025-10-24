@@ -1,13 +1,13 @@
 class ResultComponent extends HTMLElement {
-    connectedCallback() {}
+  connectedCallback() {}
 
-    set dataResult(dataResult) {
-        this._dataResult = dataResult
-        this.render()
-    }
+  set dataResult(dataResult) {
+    this._dataResult = dataResult;
+    this.render();
+  }
 
-    render() {
-        this.innerHTML = `
+  render() {
+    this.innerHTML = `
         <div class="result">
             <div
                 class="bg-gray-200 h-auto flex flex-col shadow-md w-full h-32 my-10 p-10 text-gray-800 font-medium rounded-md">
@@ -47,8 +47,8 @@ class ResultComponent extends HTMLElement {
                     <div class="bg-gray-900 p-2 text-orange-500 rounded-sm pl-6">${this._dataResult.isp}</div>
                 </div>
             </div>
-        </div>`
-    }
+        </div>`;
+  }
 }
 
-customElements.define('result-component', ResultComponent)
+customElements.define("result-component", ResultComponent);
