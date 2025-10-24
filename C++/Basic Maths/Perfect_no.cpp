@@ -18,6 +18,10 @@ int main() {
     int num;
     cout << "Enter a number: ";
     cin >> num;
+    if (cin.fail() || num <= 0) {
+        cout << "Invalid input. Please enter a positive integer." << endl;
+        return 1;
+    }
     if (isPerfect(num))
         cout << num << " is a perfect number." << endl;
     else
