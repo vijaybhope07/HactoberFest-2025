@@ -49,10 +49,16 @@ int main() {
 	int V = 9;
 	vector<vector<pair<int,int>>> adj(V);
 
+	// Adds a directed edge from u to v with weight w.
 	auto add_edge = [&](int u, int v, int w) {
 		adj[u].push_back({v, w});
 	};
 
+	// Adds an undirected edge between u and v with weight w (edges in both directions).
+	auto add_undirected_edge = [&](int u, int v, int w) {
+		adj[u].push_back({v, w});
+		adj[v].push_back({u, w});
+	};
 	add_edge(0, 1, 4);
 	add_edge(0, 7, 8);
 	add_edge(1, 2, 8);
