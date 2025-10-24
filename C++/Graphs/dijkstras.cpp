@@ -32,7 +32,7 @@ vector<long long> dijkstra(int V, const vector<vector<pair<int,int>>> &adj, int 
 		for (auto &edge : adj[u]) {
 			int v = edge.first;
 			int w = edge.second;
-			if (dist[u] + w < dist[v]) {
+			if (dist[u] < dist[v] - w) {
 				dist[v] = dist[u] + w;
 				pq.push({dist[v], v});
 			}
