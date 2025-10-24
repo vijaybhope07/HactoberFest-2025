@@ -19,9 +19,9 @@ Constraints
 """
 
 
-
 def maxProfit(prices: list[int]) -> int:
-    # Initialize variables for tracking the lowest buy price, current sell price, and maximum profit
+    # Initialize variables for tracking the lowest buy price, current sell
+    # price, and maximum profit
     buy = prices[0]
     sell = prices[0]
     max_profit = 0
@@ -43,9 +43,11 @@ def maxProfit(prices: list[int]) -> int:
     # Return the maximum profit found
     return max_profit
 
+
 def main():
     prices = [7, 1, 5, 3, 6, 4]
     print(maxProfit(prices))  # Output: 5
+
 
 if __name__ == "__main__":
     main()

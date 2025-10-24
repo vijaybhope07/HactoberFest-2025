@@ -8,12 +8,12 @@ void insert(stack<int>& s, int temp) {
         s.push(temp);
         return;
     }
-    
+
     // Otherwise, pop the top element and recursively insert
     int val = s.top();
     s.pop();
     insert(s, temp);
-    
+
     // Push the popped element back
     s.push(val);
 }
@@ -23,9 +23,9 @@ void sortStack(stack<int>& s) {
     if (!s.empty()) {
         int temp = s.top();
         s.pop();
-        
+
         sortStack(s);
-        
+
         insert(s, temp);
     }
 }

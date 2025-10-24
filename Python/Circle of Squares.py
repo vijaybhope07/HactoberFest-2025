@@ -1,15 +1,11 @@
 from turtle import *
 
 
-
 for _ in range(60):
-	
 
-	for _ in range(4):
+    for _ in range(4):
 
+        fd(100)
+        rt(90)
 
-		fd(100)
-		rt(90)
-
-
-	rt(6)
+    rt(6)

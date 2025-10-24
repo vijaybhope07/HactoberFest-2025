@@ -1,25 +1,25 @@
 function jumpSearch(arr, target) {
-    let n = arr.length;
-    let step = Math.floor(Math.sqrt(n)); // Optimal jump size
-    let prev = 0;
+  let n = arr.length;
+  let step = Math.floor(Math.sqrt(n)); // Optimal jump size
+  let prev = 0;
 
-    while (arr[Math.min(step, n) - 1] < target) {
-        prev = step;
-        step += Math.floor(Math.sqrt(n));
-        if (prev >= n) {
-            return -1; // If we've gone past the end of the array
-        }
+  while (arr[Math.min(step, n) - 1] < target) {
+    prev = step;
+    step += Math.floor(Math.sqrt(n));
+    if (prev >= n) {
+      return -1; // If we've gone past the end of the array
     }
+  }
 
-    // Linear search within the block
-    while (arr[prev] < target) {
-        prev++;
-        if (prev === Math.min(step, n)) {
-            return -1; // If we've reached the end
-        }
+  // Linear search within the block
+  while (arr[prev] < target) {
+    prev++;
+    if (prev === Math.min(step, n)) {
+      return -1; // If we've reached the end
     }
+  }
 
-    return arr[prev] === target ? prev : -1; // Return index or -1
+  return arr[prev] === target ? prev : -1; // Return index or -1
 }
 
 // Example usage

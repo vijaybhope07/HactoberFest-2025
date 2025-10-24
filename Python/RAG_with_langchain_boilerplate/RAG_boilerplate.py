@@ -7,6 +7,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 
+
 def create_RAG_model(input_file, llm):
     # Create the LLM (Large Language Model)
     llm = Ollama(model="dolphin-phi")
@@ -20,16 +21,15 @@ def create_RAG_model(input_file, llm):
     split = text_splitter.split_documents(doc)
     vector_store = FAISS.from_documents(split, embeddings)
 
-
     # Prompt generation: Giving the LLM character and purpose
     prompt = ChatPromptTemplate.from_template(
-    """
+        """
             Answer the following questions only based on the given context
-                                                    
+
             <context>
             {context}
             </context>
-                                                    
+
             Question: {input}
     """
     )
@@ -42,9 +42,9 @@ def create_RAG_model(input_file, llm):
 # Using the retrieval chain
 # Example:
 
+
 '''
 chain = create_RAG_model("your_file_here.pdf", "mistral")
 output = chain.invoke({"input":"What is the purpose of RAG?"})
 print(output["answer"])
 '''
-

@@ -2,8 +2,7 @@
 #define N 10
 
 // Print the Hosoya triangle of height n.
-void printHosoya(int n)
-{
+void printHosoya(int n) {
     int dp[N][N];
     memset(dp, 0, sizeof(dp));
 
@@ -12,10 +11,8 @@ void printHosoya(int n)
 
     // For each row.
     for (int i = 2; i < n; i++) {
-
         // for each column;
         for (int j = 0; j < n; j++) {
-
             // recursive steps.
             if (i > j)
                 dp[i][j] = dp[i - 1][j] + dp[i - 2][j];
@@ -27,15 +24,13 @@ void printHosoya(int n)
 
     // printing the solution
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j <= i; j++)
-            std :: cout << dp[i][j] << " ";       
+        for (int j = 0; j <= i; j++) std ::cout << dp[i][j] << " ";
 
-        std :: cout << std :: endl;
+        std ::cout << std ::endl;
     }
 }
 
-int main()
-{
+int main() {
     int n = 10;
     printHosoya(n);
     return 0;

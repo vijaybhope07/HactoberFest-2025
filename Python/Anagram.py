@@ -21,7 +21,8 @@ def generate_anagrams(input_str):
     # Insert the first character at all positions in each sub-anagram
     for partial_anagrams in rem_anagrams:
         for position in range(len(partial_anagrams) + 1):
-            new_anagram = partial_anagrams[:position] + first_char + partial_anagrams[position:]
+            new_anagram = partial_anagrams[:position] + \
+                first_char + partial_anagrams[position:]
             all_anagrams.append(new_anagram)
 
     # Remove duplicates and return sorted list

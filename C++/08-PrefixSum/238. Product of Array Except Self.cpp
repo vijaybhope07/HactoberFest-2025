@@ -1,12 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-    //tc : O(3N) SC : O(2N)
-class Solution
-{
-public:
-    vector<int> productExceptSelf(vector<int> &nums)
-    {
+// tc : O(3N) SC : O(2N)
+class Solution {
+   public:
+    vector<int> productExceptSelf(vector<int> &nums) {
         int n = nums.size();
 
         // prefix and suffix arrays
@@ -19,20 +17,17 @@ public:
         suff[n - 1] = 1;
 
         // build prefix array
-        for (int i = 1; i < n; i++)
-        {
+        for (int i = 1; i < n; i++) {
             pre[i] = pre[i - 1] * nums[i - 1];
         }
 
         // build suffix array
-        for (int i = n - 2; i >= 0; i--)
-        {
+        for (int i = n - 2; i >= 0; i--) {
             suff[i] = suff[i + 1] * nums[i + 1];
         }
 
         // final answer: product of prefix and suffix
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             ans[i] = pre[i] * suff[i];
         }
 
@@ -40,15 +35,13 @@ public:
     }
 };
 
-int main()
-{
+int main() {
     Solution sol;
     vector<int> nums = {1, 2, 3, 4};
     vector<int> result = sol.productExceptSelf(nums);
 
     cout << "Result: ";
-    for (int x : result)
-        cout << x << " ";
+    for (int x : result) cout << x << " ";
     cout << endl;
 
     return 0;

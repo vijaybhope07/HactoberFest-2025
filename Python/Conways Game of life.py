@@ -19,8 +19,11 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 font = pygame.font.SysFont("consolas", 20, bold=True)
 
+
 def gen(num):
-    return set((random.randrange(GRID_WIDTH), random.randrange(GRID_HEIGHT)) for _ in range(num))
+    return set((random.randrange(GRID_WIDTH), random.randrange(GRID_HEIGHT))
+               for _ in range(num))
+
 
 def get_neighbors(pos):
     x, y = pos
@@ -33,6 +36,7 @@ def get_neighbors(pos):
             if 0 <= nx < GRID_WIDTH and 0 <= ny < GRID_HEIGHT:
                 neighbors.append((nx, ny))
     return neighbors
+
 
 def adjust_grid(positions):
     all_neighbors = set()
@@ -52,6 +56,7 @@ def adjust_grid(positions):
 
     return new_positions
 
+
 def draw_grid(positions, fade_dict):
     """
     Draws the current state of the grid, including live cells and fading recently dead cells.
@@ -69,9 +74,8 @@ def draw_grid(positions, fade_dict):
         col, row = position
         top_left = (col * TILE_SIZE, row * TILE_SIZE)
         pygame.draw.rect(screen, YELLOW, (*top_left, TILE_SIZE, TILE_SIZE))
-        fade_dict[position] = 255  
+        fade_dict[position] = 255
 
-    
     for pos in list(fade_dict.keys()):
         if pos not in positions:
             fade_dict[pos] -= 10
@@ -81,13 +85,20 @@ def draw_grid(positions, fade_dict):
                 col, row = pos
                 fade = fade_dict[pos]
                 color = (fade, fade, 0)
-                pygame.draw.rect(screen, color, (col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE))
+                pygame.draw.rect(
+                    screen,
+                    color,
+                    (col * TILE_SIZE,
+                     row * TILE_SIZE,
+                     TILE_SIZE,
+                     TILE_SIZE))
 
-    
     for row in range(GRID_HEIGHT):
-        pygame.draw.line(screen, GREY, (0, row * TILE_SIZE), (WIDTH, row * TILE_SIZE))
+        pygame.draw.line(screen, GREY, (0, row * TILE_SIZE),
+                         (WIDTH, row * TILE_SIZE))
     for col in range(GRID_WIDTH):
-        pygame.draw.line(screen, GREY, (col * TILE_SIZE, 0), (col * TILE_SIZE, HEIGHT))
+        pygame.draw.line(screen, GREY, (col * TILE_SIZE, 0),
+                         (col * TILE_SIZE, HEIGHT))
 
 
 def load_pattern(name):
@@ -99,12 +110,13 @@ def load_pattern(name):
         return {(5, 5), (5, 6), (6, 5), (6, 6)}
     return set()
 
+
 def main():
     running = True
     playing = False
     count = 0
     # Number of frames between simulation updates; controls simulation speed.
-    update_frequency = 10  
+    update_frequency = 10
     positions = set()
     fade_dict = {}
     generation = 0
@@ -113,7 +125,8 @@ def main():
         clock.tick(FPS)
         screen.fill(BLACK)
 
-        pygame.display.set_caption(f"{'▶ Playing' if playing else '⏸ Paused'} | Speed: {update_frequency} | Gen: {generation}")
+        pygame.display.set_caption(
+            f"{'▶ Playing' if playing else '⏸ Paused'} | Speed: {update_frequency} | Gen: {generation}")
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -154,7 +167,6 @@ def main():
                 if event.key == pygame.K_DOWN:
                     update_frequency += 1
 
-        
         if playing:
             count += 1
             if count >= update_frequency:

@@ -1,8 +1,6 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-bool isNumber(string &s) {
-    return is_valid_number(s);
-}
+bool isNumber(string& s) { return is_valid_number(s); }
 
 bool is_valid_number(string& s) {
     if (s.empty()) return false;
@@ -39,7 +37,6 @@ bool is_valid_number(string& s) {
     }
     return i == s.size() && (has_integer_part || has_decimal_part);
 }
-
 
 int main() {
     string s1 = "0";

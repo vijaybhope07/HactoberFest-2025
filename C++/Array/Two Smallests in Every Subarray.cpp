@@ -2,16 +2,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 // } Driver Code Ends
 class Solution {
-  public:
+   public:
     int pairWithMaxSum(vector<int>& arr) {
         // code here
-        int count=-1;
-        for(int i=1;i<arr.size();i++)
-        {
-            count=max(count,arr[i]+arr[i-1]);
+        int count = -1;
+        for (int i = 1; i < arr.size(); i++) {
+            count = max(count, arr[i] + arr[i - 1]);
         }
         return count;
     }

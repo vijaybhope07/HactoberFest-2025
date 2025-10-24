@@ -2,83 +2,55 @@
 
 using namespace std;
 
-bool isbalanced(string s)
-{
-    int n=s.length();
+bool isbalanced(string s) {
+    int n = s.length();
     stack<char> st;
-    bool ans=true;
-    for(int i=0;i<n;i++)
-    {
-        if(s[i]=='(' || s[i]=='{' || s[i]=='[')
-        {
+    bool ans = true;
+    for (int i = 0; i < n; i++) {
+        if (s[i] == '(' || s[i] == '{' || s[i] == '[') {
             st.push(s[i]);
-        }
-        else if(s[i]==')')
-        {
-            if(!st.empty() && st.top()=='(')
-            {
+        } else if (s[i] == ')') {
+            if (!st.empty() && st.top() == '(') {
                 st.pop();
+            } else {
+                ans = false;
+                break;
             }
-            else
-            {
-                ans=false;
+        } else if (s[i] == '}') {
+            if (!st.empty() && st.top() == '{') {
+                st.pop();
+            } else {
+                ans = false;
+                break;
+            }
+        } else if (s[i] == ']') {
+            if (!st.empty() && st.top() == '[') {
+                st.pop();
+            } else {
+                ans = false;
                 break;
             }
         }
-        else if(s[i]=='}')
-        {
-            if(!st.empty() && st.top()=='{')
-            {
-                st.pop();
-            }
-            else
-            {
-                ans=false;
-                break;
-            }
-        }
-        else if(s[i]==']')
-        {
-            if(!st.empty() && st.top()=='[')
-            {
-                st.pop();
-            }
-            else
-            {
-                ans=false;
-                break;
-            }
-        }
-        
     }
-    if(!st.empty())
-    {
+    if (!st.empty()) {
         return false;
     }
-    
+
     return ans;
-    
-    
 }
 
-
-
-int main()
-{
+int main() {
     int t;
-    cin>>t;
-    while(t--)
-    {
+    cin >> t;
+    while (t--) {
         string s;
-    cin>>s;
-    if(isbalanced(s))
-    {
-        cout<<"YES"<<endl;
+        cin >> s;
+        if (isbalanced(s)) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
     }
-    else {
-    cout<<"NO"<<endl;
-    }
-    }
-    
+
     return 0;
 }

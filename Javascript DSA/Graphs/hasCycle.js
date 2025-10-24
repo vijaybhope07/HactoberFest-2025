@@ -1,28 +1,27 @@
 function hasCycle(graph, isDirected = true) {
-    const visited = new Set();
-    const stack = new Set();
+  const visited = new Set();
+  const stack = new Set();
 
-    function dfs(node, parent = null) {
-        if (stack.has(node)) return true;
-        if (visited.has(node)) return false;
+  function dfs(node, parent = null) {
+    if (stack.has(node)) return true;
+    if (visited.has(node)) return false;
 
-        visited.add(node);
-        stack.add(node);
+    visited.add(node);
+    stack.add(node);
 
-        for (const neighbor of graph[node] || []) {
-
-            if (neighbor === parent && !isDirected) continue;
-            if (dfs(neighbor, node)) return true;
-        }
-
-        stack.delete(node);
-        return false;
+    for (const neighbor of graph[node] || []) {
+      if (neighbor === parent && !isDirected) continue;
+      if (dfs(neighbor, node)) return true;
     }
 
-    for (const node in graph) {
-        if (!visited.has(node) && dfs(node)) return true;
-    }
+    stack.delete(node);
     return false;
+  }
+
+  for (const node in graph) {
+    if (!visited.has(node) && dfs(node)) return true;
+  }
+  return false;
 }
 
 // Test cases for directed graph

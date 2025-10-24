@@ -3,7 +3,7 @@
 using namespace std;
 
 class Patient {
-protected:
+   protected:
     string name;
     int age;
     string contactNo;
@@ -11,68 +11,62 @@ protected:
     string appointmentDate;
     string appointmentTime;
 
-public:
+   public:
     Patient(string n = "Unknown", int a = 0, string contact = "N/A")
-        : name(n), age(a), contactNo(contact), docAssigned("None"), appointmentDate("Not Scheduled"), appointmentTime("Not Scheduled") {}
+        : name(n),
+          age(a),
+          contactNo(contact),
+          docAssigned("None"),
+          appointmentDate("Not Scheduled"),
+          appointmentTime("Not Scheduled") {}
 
     void scheduleAppointment(string doctor, string date, string Time) {
         docAssigned = doctor;
         appointmentDate = date;
         appointmentTime = Time;
-        cout << "Appointment scheduled with Dr." << docAssigned << " on " << appointmentDate << " at " << appointmentTime << endl;
+        cout << "Appointment scheduled with Dr." << docAssigned << " on "
+             << appointmentDate << " at " << appointmentTime << endl;
     }
 
-    virtual void display(){
-        cout<<"-------------------------------------------\n";
-        cout<<"PATIENT'S DETAILS\n";
-        cout<<"Name: " << name << endl;
-        cout<<"Age: " << age << endl;
-        cout<<"Contact Number: " << contactNo << endl;
-        cout<<"Doctor Assigned: " << docAssigned << endl;
-        cout<<"Appointment Date: " << appointmentDate << endl;
-        cout<<"Appointment Time: " << appointmentTime << endl;
-        cout<<"-------------------------------------------\n";
+    virtual void display() {
+        cout << "-------------------------------------------\n";
+        cout << "PATIENT'S DETAILS\n";
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Contact Number: " << contactNo << endl;
+        cout << "Doctor Assigned: " << docAssigned << endl;
+        cout << "Appointment Date: " << appointmentDate << endl;
+        cout << "Appointment Time: " << appointmentTime << endl;
+        cout << "-------------------------------------------\n";
     }
 
-    string getName() const { 
-        return name; 
-        
-    }
-    string getDocAssigned() const {
-        return docAssigned; 
-        
-    }
-    string getAppointmentDate() const {
-        return appointmentDate; 
-        
-    }
-    string getAppointmentTime() const {
-        return appointmentTime; 
-        
-    }
+    string getName() const { return name; }
+    string getDocAssigned() const { return docAssigned; }
+    string getAppointmentDate() const { return appointmentDate; }
+    string getAppointmentTime() const { return appointmentTime; }
 };
 
 class SpecialPatient : public Patient {
-private:
+   private:
     string medicalCondition;
 
-public:
+   public:
     SpecialPatient(string n, int a, string condition, string contact)
         : Patient(n, a, contact), medicalCondition(condition) {}
 
-    void display()override {
+    void display() override {
         Patient::display();
         cout << "Medical Condition: " << medicalCondition << endl;
     }
 };
 
 class Clinic {
-private:
+   private:
     static const int MAX_PATIENTS = 100;
     Patient* patients[MAX_PATIENTS];
     int totalPatients;
 
-public:
+   public:
     Clinic() : totalPatients(0) {}
 
     void addPatient() {
@@ -84,14 +78,14 @@ public:
         string name, contact, condition;
         int age, type;
         cout << "Enter Patient Type (1. REGULAR 2. SPECIAL): ";
-        cin>>type;
-        cin.ignore(); // Ignore remaining newline character
-        cout<<"Enter Patient Name: ";
-        getline(cin,name);
-        cout<<"Enter Age: ";
-        cin>>age;
+        cin >> type;
+        cin.ignore();  // Ignore remaining newline character
+        cout << "Enter Patient Name: ";
+        getline(cin, name);
+        cout << "Enter Age: ";
+        cin >> age;
         cin.ignore();
-        cout<<"Enter Contact Number: ";
+        cout << "Enter Contact Number: ";
         getline(cin, contact);
 
         if (type == 1) {
@@ -99,7 +93,8 @@ public:
         } else if (type == 2) {
             cout << "Enter the condition: ";
             getline(cin, condition);
-            patients[totalPatients] = new SpecialPatient(name, age, condition, contact);
+            patients[totalPatients] =
+                new SpecialPatient(name, age, condition, contact);
         }
 
         totalPatients++;
@@ -111,10 +106,10 @@ public:
             if (patients[i]->getDocAssigned() == doctor &&
                 patients[i]->getAppointmentDate() == date &&
                 patients[i]->getAppointmentTime() == Time) {
-                return true; // Conflict found
+                return true;  // Conflict found
             }
         }
-        return false; // No conflict
+        return false;  // No conflict
     }
 
     void scheduleAppointment() {
@@ -129,20 +124,22 @@ public:
         getline(cin, Time);
 
         if (checkConflictingAppointment(doctor, date, Time)) {
-            cout << "Conflict: Doctor " << doctor << " already has an appointment on " << date << " at " << Time << endl;
+            cout << "Conflict: Doctor " << doctor
+                 << " already has an appointment on " << date << " at " << Time
+                 << endl;
             return;
         }
-        bool patientfound=false;
+        bool patientfound = false;
         for (int i = 0; i < totalPatients; i++) {
             if (patients[i]->getName() == name) {
-                patientfound=true;
+                patientfound = true;
                 patients[i]->scheduleAppointment(doctor, date, Time);
                 return;
             }
         }
-        if(patientfound==false){
-        cout << "Patient not found.\n";
-    }
+        if (patientfound == false) {
+            cout << "Patient not found.\n";
+        }
     }
 
     void viewPatientDetails() {

@@ -4,17 +4,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 // } Driver Code Ends
 // User function template for C++
 
 class Solution {
-  public:
+   public:
     long long findSmallest(vector<int> &arr) {
         // Your code goes here.
         long long ans = 1;
-        for(auto elm:arr){
-            if(ans>=elm){
+        for (auto elm : arr) {
+            if (ans >= elm) {
                 ans += elm;
             }
         }

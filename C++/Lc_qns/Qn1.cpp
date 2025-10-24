@@ -4,7 +4,7 @@
 using namespace std;
 
 class Solution {
-public:
+   public:
     int maxDistinctElements(vector<int>& nums, int k) {
         sort(nums.begin(), nums.end());
         int cnt = 0, prev = INT_MIN;

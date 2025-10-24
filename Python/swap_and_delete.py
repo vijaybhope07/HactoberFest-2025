@@ -48,7 +48,7 @@ In the fourth test case, you need to delete all four characters to get the empty
 
 t = int(input())  # Number of test cases
 
-for _ in range(t): 
+for _ in range(t):
     s = input()  # Read the string for this test case
 
     char_count = {}  # Dictionary to count occurrences of each character
@@ -57,7 +57,7 @@ for _ in range(t):
             char_count[s[i]] = 1  # First occurrence of the character
         else:
             char_count[s[i]] += 1  # Increment existing count
-    
+
     # Iterate again to simulate removing opposite pairs (0-1 or 1-0)
     for i in range(len(s)):
         if s[i] == "0":
@@ -67,7 +67,7 @@ for _ in range(t):
                     char_count.pop("1")  # Remove key if count reaches 0
             else:
                 break  # Stop if no '1' left to pair with
-        
+
         elif s[i] == "1":
             if "0" in char_count:  # If a '0' exists, remove one
                 char_count["0"] -= 1
@@ -82,5 +82,3 @@ for _ in range(t):
         coins += char_count[char]
 
     print(coins)  # Output total remaining characters after pairing
-        
-        

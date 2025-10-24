@@ -1,11 +1,11 @@
-#include <iostream>
-#include <vector>
-#include <string>
 #include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+   public:
     vector<int> largestDivisibleSubset(vector<int>& nums) {
         int n = nums.size();
         if (n == 0) return {};
@@ -51,14 +51,12 @@ int main() {
 
     vector<int> nums(n);
     cout << "Enter the elements: ";
-    for (int i = 0; i < n; i++)
-        cin >> nums[i];
+    for (int i = 0; i < n; i++) cin >> nums[i];
 
     vector<int> result = sol.largestDivisibleSubset(nums);
 
     cout << "Largest Divisible Subset: ";
-    for (int x : result)
-        cout << x << " ";
+    for (int x : result) cout << x << " ";
     cout << endl;
 
     return 0;

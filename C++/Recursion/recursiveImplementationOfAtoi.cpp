@@ -7,8 +7,7 @@ const int INT_MAX_VAL = 2147483647;
 // Recursive helper
 int helper(const string &s, int i, long long num, int sign) {
     // If we are out of bounds or at a non-digit, return
-    if (i >= s.size() || !isdigit(s[i]))
-        return (int)(sign * num);
+    if (i >= s.size() || !isdigit(s[i])) return (int)(sign * num);
 
     // Update num with current digit
     num = num * 10 + (s[i] - '0');

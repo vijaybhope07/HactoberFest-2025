@@ -3,6 +3,7 @@ class Node:
         self.val = val
         self.next = None
 
+
 def get_intersection_node(headA, headB):
     """
     If two linked lists intersect, return the node where they intersect.
@@ -37,17 +38,17 @@ if __name__ == "__main__":
     headA.next = Node(9)
     headA.next.next = Node(1)
     headA.next.next.next = intersect_node
-https://github.com/learnsomethingtoday/Simple-DSA/tree/main
-    headB = Node(3)
-    headB.next = intersect_node 
+https: // github.com / learnsomethingtoday / Simple - DSA / tree / main
+headB = Node(3)
+headB.next = intersect_node
 
-    print("List A:")
-    print_list(headA)
-    print("List B:")
-    print_list(headB)
+print("List A:")
+print_list(headA)
+print("List B:")
+ print_list(headB)
 
-    intersection = get_intersection_node(headA, headB)
-    if intersection:
+  intersection = get_intersection_node(headA, headB)
+   if intersection:
         print(f" Intersection found at node with value: {intersection.val}")
     else:
         print(" No intersection found.")

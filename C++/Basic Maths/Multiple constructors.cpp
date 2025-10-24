@@ -1,67 +1,52 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
 class integer
 
 {
+    int m, n;
 
-  int m,n;
+   public:
+    integer(int x, int y) {
+        m = x;
 
-  public:
+        n = y;
 
-    integer(int x,int y){
-
-      m=x;
-
-      n=y;
-
-      cout<<"1st constructor called"<<endl;
-
+        cout << "1st constructor called" << endl;
     }
 
-    integer(){
+    integer() {
+        m = 1, n = 2;
 
-      m=1,n=2;
-
-      cout<<"2nd constructor called"<<endl;
-
+        cout << "2nd constructor called" << endl;
     }
 
-    integer(integer &i){
+    integer(integer &i) {
+        m = i.m + 5;
 
-     m=i.m+5;
+        n = i.n + 6;
 
-     n=i.n+6;
-
-     cout<<"3rd constructor called"<<endl;
-
+        cout << "3rd constructor called" << endl;
     }
 
-    void putdata(){
-
-     cout<<"  m: "<<m<<"\n  n: "<<n<<endl;
-
-    }
-
+    void putdata() { cout << "  m: " << m << "\n  n: " << n << endl; }
 };
 
 int main()
 
 {
+    integer inte(5, 6);
 
-   integer inte(5,6);
+    inte.putdata();
 
-   inte.putdata();
+    integer b;
 
-   integer b;
+    b.putdata();
 
-   b.putdata();
+    integer c(inte);
 
-   integer c(inte);
-
-   c.putdata();
+    c.putdata();
 
     return 0;
-
 }

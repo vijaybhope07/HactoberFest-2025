@@ -13,7 +13,7 @@ def shiftedBinarySearchHelper(array, target, left, right):
         # If we find the target
         if potentialMatch == target:
             return middle
-        
+
         # Check if the left side is sorted
         if leftNum <= potentialMatch:
             # Target is in the left sorted portion
@@ -31,6 +31,7 @@ def shiftedBinarySearchHelper(array, target, left, right):
 
     # Target not found
     return -1
+
 
 # Example usage:
 array = [45, 61, 71, 72, 73, 0, 1, 21, 33, 37]

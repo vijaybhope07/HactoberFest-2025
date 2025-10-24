@@ -1,2 +1,2 @@
-import './inputComponent.js'
-import './resultComponent.js'
+import "./inputComponent.js";
+import "./resultComponent.js";

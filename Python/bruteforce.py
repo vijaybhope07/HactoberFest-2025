@@ -6,7 +6,7 @@ for key in range(len(LETTERS)):
         if symbol in LETTERS:
             num = LETTERS.find(symbol)
             num = num - key
-        if num<0:
+        if num < 0:
             num = num + len(LETTERS)
             translated += LETTERS[num]
         else:

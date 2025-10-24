@@ -1,24 +1,21 @@
 #include <iostream>
 using namespace std;
 
-
 class TreeNode {
-public:
+   public:
     int val;
     TreeNode* left;
     TreeNode* right;
     TreeNode(int val) : val(val), left(nullptr), right(nullptr) {}
 };
 
-
 void preorderTraversal(TreeNode* root) {
     if (root) {
-        cout << root->val << " "; 
-        preorderTraversal(root->left); 
-        preorderTraversal(root->right); 
+        cout << root->val << " ";
+        preorderTraversal(root->left);
+        preorderTraversal(root->right);
     }
 }
-
 
 int main() {
     TreeNode* root = new TreeNode(1);

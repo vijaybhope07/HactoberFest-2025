@@ -1,9 +1,9 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-bool helper(string s,int i,int j){
-    while(i<=j){
-        if(s[i]!= s[j]) return false;
+bool helper(string s, int i, int j) {
+    while (i <= j) {
+        if (s[i] != s[j]) return false;
         i++;
         j--;
     }
@@ -11,10 +11,10 @@ bool helper(string s,int i,int j){
 }
 bool validPalindrome(string s) {
     int n = s.length();
-    int i=0,j=n-1;
-    while(i<=j){
-        if(s[i]!= s[j]){
-            return (helper(s, i+1, j) || helper(s, i, j-1));
+    int i = 0, j = n - 1;
+    while (i <= j) {
+        if (s[i] != s[j]) {
+            return (helper(s, i + 1, j) || helper(s, i, j - 1));
         }
         i++;
         j--;
@@ -22,8 +22,8 @@ bool validPalindrome(string s) {
     return true;
 }
 
-int main(){
+int main() {
     string s = "abca";
-    cout << (validPalindrome(s)? "Yes" : "No") << endl;
+    cout << (validPalindrome(s) ? "Yes" : "No") << endl;
     return 0;
 }

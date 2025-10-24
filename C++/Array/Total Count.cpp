@@ -4,22 +4,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 // } Driver Code Ends
 // User function template for C++
 
 class Solution {
-  public:
+   public:
     int totalCount(int k, vector<int>& arr) {
         // code here
-        int count=0;
-        for(int i=0;i<arr.size();i++)
-        {
-            int ele=arr[i];
-            while(ele>0)
-            {
+        int count = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            int ele = arr[i];
+            while (ele > 0) {
                 count++;
-                ele-=k;
+                ele -= k;
             }
         }
         return count;

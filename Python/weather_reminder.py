@@ -4,12 +4,14 @@ from datetime import datetime
 import sys
 
 # ----------------- CONFIG -----------------
-API_KEY = "your_openweathermap_api_key"  # Get free API key from openweathermap.org
+# Get free API key from openweathermap.org
+API_KEY = "your_openweathermap_api_key"
 CITY = "London"
 UNIT = "metric"  # metric -> Celsius, imperial -> Fahrenheit
 CHECK_HOUR = 8  # 24-hour format, e.g., 8 AM
 CHECK_MINUTE = 0
 # ------------------------------------------
+
 
 def get_weather(city: str):
     """Fetch current weather from OpenWeatherMap API."""
@@ -18,7 +20,7 @@ def get_weather(city: str):
         response = requests.get(url)
         data = response.json()
         if response.status_code != 200:
-            print(f"Error: {data.get('message','Unknown error')}")
+            print(f"Error: {data.get('message', 'Unknown error')}")
             return None
         weather = data['weather'][0]['description']
         temp = data['main']['temp']
@@ -29,12 +31,19 @@ def get_weather(city: str):
         print("Error fetching weather:", e)
         return None
 
+
 def send_notification(message: str):
     """Simple print notification. Can be extended to system notifications."""
-    print(f"\n📢 Weather Reminder ({datetime.now().strftime('%Y-%m-%d %H:%M')}):\n{message}\n")
+    print(
+        f"\n📢 Weather Reminder ({
+            datetime.now().strftime('%Y-%m-%d %H:%M')}):\n{message}\n")
+
 
 def main():
-    print(f"Weather Reminder started for {CITY}. Will check daily at {CHECK_HOUR:02d}:{CHECK_MINUTE:02d}.")
+    print(
+        f"Weather Reminder started for {CITY}. Will check daily at {
+            CHECK_HOUR:02d}:{
+            CHECK_MINUTE:02d}.")
     while True:
         now = datetime.now()
         if now.hour == CHECK_HOUR and now.minute == CHECK_MINUTE:
@@ -44,6 +53,7 @@ def main():
             # Wait 60 seconds to avoid multiple triggers within the same minute
             time.sleep(60)
         time.sleep(10)
+
 
 if __name__ == "__main__":
     try:

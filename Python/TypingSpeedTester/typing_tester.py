@@ -1,6 +1,7 @@
 import time
 import random
 
+
 def get_sentence():
     """
     Returns a random sentence from a predefined list.
@@ -15,6 +16,7 @@ def get_sentence():
         "Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live."
     ]
     return random.choice(sentences)
+
 
 def typing_test():
     """
@@ -62,6 +64,7 @@ def typing_test():
     print(f"Your typing speed: {wpm:.2f} WPM")
     print(f"Accuracy: {accuracy:.2f}%")
     print("\n--------------------")
+
 
 if __name__ == "__main__":
     while True:

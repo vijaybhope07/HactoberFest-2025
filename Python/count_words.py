@@ -1,6 +1,6 @@
 def count_words(text):
-    words = text.split()  
-    return len(words)  
+    words = text.split()
+    return len(words)
 
 
 text = "Hello, welcome to the world of Python!"

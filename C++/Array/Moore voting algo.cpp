@@ -1,5 +1,7 @@
-public class MajorityElement {
-    public static int findMajorityElement(int[] nums) {
+public
+class MajorityElement {
+   public
+    static int findMajorityElement(int[] nums) {
         // Phase 1: Find a candidate for majority element
         int candidate = nums[0];
         int count = 1;
@@ -32,10 +34,12 @@ public class MajorityElement {
         }
     }
 
-    public static void main(String[] args) {
+   public
+    static void main(String[] args) {
         int[] nums = {2, 2, 1, 1, 2, 2, 2};
         try {
-            System.out.println("Majority Element: " + findMajorityElement(nums));
+            System.out.println("Majority Element: " +
+                               findMajorityElement(nums));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

@@ -2,6 +2,7 @@ def encrypt_xor(plaintext, key):
     encrypted_text = "".join(chr(ord(char) ^ key) for char in plaintext)
     return encrypted_text
 
+
 # Example usage
 plaintext = "Hello World"
 key = 5  # XOR key (can be any integer value)

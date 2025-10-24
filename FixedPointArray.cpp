@@ -5,8 +5,7 @@ using namespace std;
 
 int fixedPoint(vector<int> &arr) {
     for (int i = 0; i < arr.size(); i++) {
-        if (arr[i] == i)
-            return i;
+        if (arr[i] == i) return i;
     }
 
     // If no fixed point is found
@@ -14,7 +13,7 @@ int fixedPoint(vector<int> &arr) {
 }
 
 int main() {
-    vector<int> arr = { -10, -5, 0, 3, 7};
-    cout<<fixedPoint(arr);
+    vector<int> arr = {-10, -5, 0, 3, 7};
+    cout << fixedPoint(arr);
     return 0;
 }

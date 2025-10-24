@@ -56,6 +56,7 @@ money_levels = [
     "$64,000", "$125,000", "$250,000", "$500,000", "$1,000,000"
 ]
 
+
 def play_game():
     # Shuffle questions
     questions = question_data.copy()
@@ -66,7 +67,7 @@ def play_game():
 
     for i in range(len(questions)):
         q, options, correct = questions[i]
-        print(f"\nQuestion {i+1} for {money_levels[i]}:")
+        print(f"\nQuestion {i + 1} for {money_levels[i]}:")
         print(q)
         for option in options:
             print(option)
@@ -82,16 +83,19 @@ def play_game():
             print(f"✅ Correct! You've won {money_levels[i]}!")
         else:
             print(f"❌ Wrong answer. The correct answer was {correct}.")
-            print(f"You leave with {'$0' if i == 0 else money_levels[i-1]}.\n")
+            print(
+                f"You leave with {'$0' if i == 0 else money_levels[i - 1]}.\n")
             return  # Game ends
 
     print("\n🎊 Congratulations! You are now a MILLIONAIRE! 🏆💰")
+
 
 def main():
     while True:
         play_game()
         while True:
-            retry = input("\nWould you like to play again? (Y/N): ").strip().upper()
+            retry = input(
+                "\nWould you like to play again? (Y/N): ").strip().upper()
             if retry == "Y":
                 break  # Start again
             elif retry == "N":
@@ -99,6 +103,7 @@ def main():
                 sys.exit()
             else:
                 print("Please enter Y or N.")
+
 
 # Run the game
 if __name__ == "__main__":

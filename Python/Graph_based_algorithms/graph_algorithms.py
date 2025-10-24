@@ -36,11 +36,13 @@ import argparse
 
 # --------------------------- Graph representation ---------------------------
 
+
 @dataclass(frozen=True)
 class Edge:
     u: Any
     v: Any
     w: float = 1.0
+
 
 def build_adj(
     edges: Iterable[Tuple[Any, Any, float]],
@@ -60,6 +62,7 @@ def build_adj(
 
 # ------------------------------ Traversals ----------------------------------
 
+
 def bfs(adj: Dict[Any, List[Tuple[Any, float]]], src: Any) -> List[Any]:
     """Breadth-first traversal order (unweighted semantics)."""
     seen, order = {src}, []
@@ -73,13 +76,14 @@ def bfs(adj: Dict[Any, List[Tuple[Any, float]]], src: Any) -> List[Any]:
                 q.append(v)
     return order
 
+
 def dfs_iter(adj: Dict[Any, List[Tuple[Any, float]]], src: Any) -> List[Any]:
     """Iterative DFS pre-order."""
     seen, order = set(), []
     st = [src]
     while st:
         u = st.pop()
-        if u in seen: 
+        if u in seen:
             continue
         seen.add(u)
         order.append(u)
@@ -88,12 +92,18 @@ def dfs_iter(adj: Dict[Any, List[Tuple[Any, float]]], src: Any) -> List[Any]:
                 st.append(v)
     return order
 
-def dfs_recursive(
-    adj: Dict[Any, List[Tuple[Any, float]]], src: Any, order: Optional[List[Any]] = None, _seen: Optional[Set[Any]] = None
-) -> List[Any]:
+
+def dfs_recursive(adj: Dict[Any,
+                            List[Tuple[Any,
+                                       float]]],
+                  src: Any,
+                  order: Optional[List[Any]] = None,
+                  _seen: Optional[Set[Any]] = None) -> List[Any]:
     """Recursive DFS pre-order."""
-    if order is None: order = []
-    if _seen is None: _seen = set()
+    if order is None:
+        order = []
+    if _seen is None:
+        _seen = set()
     _seen.add(src)
     order.append(src)
     for v, _ in adj.get(src, []):
@@ -103,11 +113,13 @@ def dfs_recursive(
 
 # --------------------------- Connected Components ---------------------------
 
-def connected_components(adj: Dict[Any, List[Tuple[Any, float]]]) -> List[List[Any]]:
+
+def connected_components(
+        adj: Dict[Any, List[Tuple[Any, float]]]) -> List[List[Any]]:
     """Undirected CCs."""
     seen, comps = set(), []
     for node in adj.keys():
-        if node in seen: 
+        if node in seen:
             continue
         comp, q = [], deque([node])
         seen.add(node)
@@ -123,7 +135,9 @@ def connected_components(adj: Dict[Any, List[Tuple[Any, float]]]) -> List[List[A
 
 # --------------------------- Strongly Connected Components ------------------
 
-def kosaraju_scc(adj_dir: Dict[Any, List[Tuple[Any, float]]]) -> List[List[Any]]:
+
+def kosaraju_scc(
+        adj_dir: Dict[Any, List[Tuple[Any, float]]]) -> List[List[Any]]:
     """Kosaraju's algorithm (directed)."""
     rev: Dict[Any, List[Tuple[Any, float]]] = defaultdict(list)
     for u, nbrs in adj_dir.items():
@@ -162,6 +176,7 @@ def kosaraju_scc(adj_dir: Dict[Any, List[Tuple[Any, float]]]) -> List[List[Any]]
 
 # ------------------------------ Topological Sort ----------------------------
 
+
 def topo_kahn(adj_dir: Dict[Any, List[Tuple[Any, float]]]) -> List[Any]:
     """Kahn's algorithm (BFS in-degree). Raises ValueError on cycles."""
     indeg = {u: 0 for u in adj_dir}
@@ -180,8 +195,10 @@ def topo_kahn(adj_dir: Dict[Any, List[Tuple[Any, float]]]) -> List[Any]:
             if indeg[v] == 0:
                 q.append(v)
     if len(order) != len(indeg):
-        raise ValueError("Graph has at least one cycle; topological sort impossible.")
+        raise ValueError(
+            "Graph has at least one cycle; topological sort impossible.")
     return order
+
 
 def topo_dfs(adj_dir: Dict[Any, List[Tuple[Any, float]]]) -> List[Any]:
     """DFS-based topo order (raises ValueError on cycles)."""
@@ -207,6 +224,7 @@ def topo_dfs(adj_dir: Dict[Any, List[Tuple[Any, float]]]) -> List[Any]:
 
 # ------------------------------- Cycle Checks -------------------------------
 
+
 def has_cycle_undirected(adj: Dict[Any, List[Tuple[Any, float]]]) -> bool:
     """Detect cycle in undirected graph via DFS and parent tracking."""
     seen: Set[Any] = set()
@@ -224,6 +242,7 @@ def has_cycle_undirected(adj: Dict[Any, List[Tuple[Any, float]]]) -> bool:
         if u not in seen and dfs(u, None):
             return True
     return False
+
 
 def has_cycle_directed(adj_dir: Dict[Any, List[Tuple[Any, float]]]) -> bool:
     """Detect cycle in directed graph using colors."""
@@ -245,6 +264,7 @@ def has_cycle_directed(adj_dir: Dict[Any, List[Tuple[Any, float]]]) -> bool:
 
 # ------------------------------ Bipartite Check -----------------------------
 
+
 def is_bipartite(adj: Dict[Any, List[Tuple[Any, float]]]) -> bool:
     """Check bipartiteness via BFS coloring (undirected)."""
     color: Dict[Any, int] = {}
@@ -265,7 +285,9 @@ def is_bipartite(adj: Dict[Any, List[Tuple[Any, float]]]) -> bool:
 
 # ------------------------------ Shortest Paths ------------------------------
 
-def shortest_path_unweighted(adj: Dict[Any, List[Tuple[Any, float]]], src: Any) -> Dict[Any, int]:
+
+def shortest_path_unweighted(
+        adj: Dict[Any, List[Tuple[Any, float]]], src: Any) -> Dict[Any, int]:
     """BFS distances (unweighted)."""
     dist = {src: 0}
     q = deque([src])
@@ -277,7 +299,9 @@ def shortest_path_unweighted(adj: Dict[Any, List[Tuple[Any, float]]], src: Any) 
                 q.append(v)
     return dist
 
-def dijkstra(adj: Dict[Any, List[Tuple[Any, float]]], src: Any) -> Dict[Any, float]:
+
+def dijkstra(adj: Dict[Any, List[Tuple[Any, float]]],
+             src: Any) -> Dict[Any, float]:
     """Dijkstra for non-negative weights."""
     dist: Dict[Any, float] = {src: 0.0}
     pq: List[Tuple[float, Any]] = [(0.0, src)]
@@ -293,6 +317,7 @@ def dijkstra(adj: Dict[Any, List[Tuple[Any, float]]], src: Any) -> Dict[Any, flo
                 dist[v] = nd
                 heapq.heappush(pq, (nd, v))
     return dist
+
 
 def bellman_ford(
     edges: Iterable[Edge],
@@ -318,12 +343,20 @@ def bellman_ford(
     has_neg = any(dist[e.u] + e.w < dist[e.v] for e in edgelist)
     return dist, has_neg
 
-def floyd_warshall(nodes: List[Any], adj_dir: Dict[Any, List[Tuple[Any, float]]]) -> Tuple[Dict[Any, Dict[Any, float]], bool]:
+
+def floyd_warshall(nodes: List[Any],
+                   adj_dir: Dict[Any,
+                                 List[Tuple[Any,
+                                            float]]]) -> Tuple[Dict[Any,
+                                                                    Dict[Any,
+                                                                         float]],
+                                                               bool]:
     """
     Floyd–Warshall all-pairs shortest paths.
     Returns (dist, has_negative_cycle).
     """
-    dist: Dict[Any, Dict[Any, float]] = {i: {j: math.inf for j in nodes} for i in nodes}
+    dist: Dict[Any, Dict[Any, float]] = {
+        i: {j: math.inf for j in nodes} for i in nodes}
     for i in nodes:
         dist[i][i] = 0.0
     for u, nbrs in adj_dir.items():
@@ -332,7 +365,7 @@ def floyd_warshall(nodes: List[Any], adj_dir: Dict[Any, List[Tuple[Any, float]]]
     for k in nodes:
         for i in nodes:
             dik = dist[i][k]
-            if dik == math.inf: 
+            if dik == math.inf:
                 continue
             for j in nodes:
                 v = dik + dist[k][j]
@@ -342,6 +375,7 @@ def floyd_warshall(nodes: List[Any], adj_dir: Dict[Any, List[Tuple[Any, float]]]
     return dist, has_neg
 
 # ---------------------------------- A* --------------------------------------
+
 
 def astar(
     adj: Dict[Any, List[Tuple[Any, float]]],
@@ -354,7 +388,7 @@ def astar(
     Returns (g_score, parent) for path reconstruction to 'goal'.
     """
     if h is None:
-        h = lambda _: 0.0
+        def h(_): return 0.0
     g: Dict[Any, float] = {src: 0.0}
     f: Dict[Any, float] = {src: h(src)}
     openpq: List[Tuple[float, Any]] = [(f[src], src)]
@@ -379,18 +413,22 @@ def astar(
 
 # ---------------------------------- MST -------------------------------------
 
+
 class UnionFind:
     def __init__(self, nodes: Iterable[Any]):
         self.p = {x: x for x in nodes}
         self.r = {x: 0 for x in nodes}
+
     def find(self, x: Any) -> Any:
         while self.p[x] != x:
             self.p[x] = self.p[self.p[x]]
             x = self.p[x]
         return x
+
     def union(self, a: Any, b: Any) -> bool:
         ra, rb = self.find(a), self.find(b)
-        if ra == rb: return False
+        if ra == rb:
+            return False
         if self.r[ra] < self.r[rb]:
             ra, rb = rb, ra
         self.p[rb] = ra
@@ -398,7 +436,10 @@ class UnionFind:
             self.r[ra] += 1
         return True
 
-def kruskal_mst(nodes: Iterable[Any], edges: Iterable[Edge]) -> Tuple[List[Edge], float]:
+
+def kruskal_mst(nodes: Iterable[Any],
+                edges: Iterable[Edge]) -> Tuple[List[Edge],
+                                                float]:
     """Kruskal MST for undirected graphs; edges treated as undirected."""
     uf = UnionFind(nodes)
     mst: List[Edge] = []
@@ -409,7 +450,9 @@ def kruskal_mst(nodes: Iterable[Any], edges: Iterable[Edge]) -> Tuple[List[Edge]
             total += e.w
     return mst, total
 
-def prim_mst(adj: Dict[Any, List[Tuple[Any, float]]], start: Optional[Any] = None) -> Tuple[List[Edge], float]:
+
+def prim_mst(adj: Dict[Any, List[Tuple[Any, float]]],
+             start: Optional[Any] = None) -> Tuple[List[Edge], float]:
     """Prim MST for connected undirected graphs."""
     if not adj:
         return [], 0.0
@@ -435,6 +478,7 @@ def prim_mst(adj: Dict[Any, List[Tuple[Any, float]]], start: Optional[Any] = Non
 
 # ----------------------- Bridges & Articulation Points ----------------------
 
+
 def bridges(adj: Dict[Any, List[Tuple[Any, float]]]) -> List[Tuple[Any, Any]]:
     """Tarjan bridges in undirected graph."""
     timer = 0
@@ -446,7 +490,8 @@ def bridges(adj: Dict[Any, List[Tuple[Any, float]]]) -> List[Tuple[Any, Any]]:
     def dfs(u: Any, p: Any) -> None:
         nonlocal timer
         seen.add(u)
-        tin[u] = low[u] = timer; timer += 1
+        tin[u] = low[u] = timer
+        timer += 1
         for v, _ in adj.get(u, []):
             if v == p:
                 continue
@@ -463,6 +508,7 @@ def bridges(adj: Dict[Any, List[Tuple[Any, float]]]) -> List[Tuple[Any, Any]]:
             dfs(u, None)
     return res
 
+
 def articulation_points(adj: Dict[Any, List[Tuple[Any, float]]]) -> Set[Any]:
     """Tarjan articulation points in undirected graph."""
     timer = 0
@@ -474,7 +520,8 @@ def articulation_points(adj: Dict[Any, List[Tuple[Any, float]]]) -> Set[Any]:
     def dfs(u: Any, p: Any) -> None:
         nonlocal timer
         seen.add(u)
-        tin[u] = low[u] = timer; timer += 1
+        tin[u] = low[u] = timer
+        timer += 1
         children = 0
         for v, _ in adj.get(u, []):
             if v == p:
@@ -496,6 +543,7 @@ def articulation_points(adj: Dict[Any, List[Tuple[Any, float]]]) -> Set[Any]:
     return res
 
 # ------------------------- Eulerian Path/Circuit (UG) -----------------------
+
 
 def eulerian_undirected_status(adj: Dict[Any, List[Tuple[Any, float]]]) -> str:
     """
@@ -528,6 +576,7 @@ def eulerian_undirected_status(adj: Dict[Any, List[Tuple[Any, float]]]) -> str:
 
 # ------------------------------ Demo / CLI ----------------------------------
 
+
 def _demo() -> None:
 
     undirected_edges = [
@@ -544,7 +593,8 @@ def _demo() -> None:
     print("Unweighted dist from A:", shortest_path_unweighted(ug, "A"))
     print("Dijkstra from A:", dijkstra(ug, "A"))
 
-    mst_k, w_k = kruskal_mst({*ug.keys()}, [Edge(u, v, w) for (u, v, w) in undirected_edges])
+    mst_k, w_k = kruskal_mst(
+        {*ug.keys()}, [Edge(u, v, w) for (u, v, w) in undirected_edges])
     print("Kruskal MST weight:", w_k, "edges:", mst_k)
 
     mst_p, w_p = prim_mst(ug, "A")
@@ -562,7 +612,8 @@ def _demo() -> None:
     ]
     dg = build_adj(directed_edges, directed=True)
     nodes = list(dg.keys())
-    bf_dist, has_neg = bellman_ford([Edge(u, v, w) for (u, v, w) in directed_edges], nodes, "s")
+    bf_dist, has_neg = bellman_ford(
+        [Edge(u, v, w) for (u, v, w) in directed_edges], nodes, "s")
     print("Bellman–Ford from s:", bf_dist, "neg_cycle:", has_neg)
 
     fw_dist, fw_neg = floyd_warshall(nodes, dg)
@@ -570,12 +621,13 @@ def _demo() -> None:
 
     sccs = kosaraju_scc(dg)
     print("SCCs:", sccs)
-    dag = build_adj([("A","B",1),("A","C",1),("B","D",1),("C","D",1)], directed=True)
+    dag = build_adj([("A", "B", 1), ("A", "C", 1),
+                    ("B", "D", 1), ("C", "D", 1)], directed=True)
     print("Topo (Kahn):", topo_kahn(dag))
     print("Topo (DFS):", topo_dfs(dag))
 
-
     g_scores, parent = astar(ug, "A", "Z")
+
     def reconstruct(goal: Any) -> List[Any]:
         path = [goal]
         while path[-1] in parent:
@@ -583,15 +635,21 @@ def _demo() -> None:
         return list(reversed(path))
     print("A* path A->Z (cost):", g_scores.get("Z"), "path:", reconstruct("Z"))
 
+
 def main():
-    ap = argparse.ArgumentParser(description="Graph Algorithms (Python, single-file).")
-    ap.add_argument("--demo", action="store_true", help="Run a quick demonstration of all algorithms.")
+    ap = argparse.ArgumentParser(
+        description="Graph Algorithms (Python, single-file).")
+    ap.add_argument(
+        "--demo",
+        action="store_true",
+        help="Run a quick demonstration of all algorithms.")
     args = ap.parse_args()
     if args.demo:
         _demo()
     else:
         print(__doc__.splitlines()[0])
         print("Run with: python graph_algorithms.py --demo")
+
 
 if __name__ == "__main__":
     main()

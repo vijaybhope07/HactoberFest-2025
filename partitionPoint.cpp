@@ -4,28 +4,25 @@
 using namespace std;
 
 int findElement(vector<int> &arr) {
-    
     // Iteratte through each elements
-    for(int i = 1; i < arr.size() - 1; i++) {
-
+    for (int i = 1; i < arr.size() - 1; i++) {
         // to store maximum in left
         int left = INT_MIN;
-        for(int j = 0; j < i; j++) {
+        for (int j = 0; j < i; j++) {
             left = max(left, arr[j]);
         }
 
         // to store minimum in right
         int right = INT_MAX;
-        for(int j = i + 1; j < arr.size(); j++) {
+        for (int j = i + 1; j < arr.size(); j++) {
             right = min(right, arr[j]);
         }
 
         // check if current element is greater
         // than left and smaller than right (or equal)
-        if(arr[i] >= left && arr[i] <= right) {
+        if (arr[i] >= left && arr[i] <= right) {
             return arr[i];
         }
-
     }
 
     return -1;

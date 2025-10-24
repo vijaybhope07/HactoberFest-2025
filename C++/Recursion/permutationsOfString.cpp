@@ -7,11 +7,11 @@ void generatePermutations(string &str, int index) {
         cout << str << endl;
         return;
     }
-    
+
     for (int i = index; i < str.length(); i++) {
-        swap(str[index], str[i]); // Choose
-        generatePermutations(str, index + 1); // Explore
-        swap(str[index], str[i]); // Backtrack
+        swap(str[index], str[i]);              // Choose
+        generatePermutations(str, index + 1);  // Explore
+        swap(str[index], str[i]);              // Backtrack
     }
 }
 
