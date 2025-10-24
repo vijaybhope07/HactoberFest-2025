@@ -103,6 +103,7 @@ def main():
     running = True
     playing = False
     count = 0
+    # Number of frames between simulation updates; controls simulation speed.
     update_frequency = 10  
     positions = set()
     fade_dict = {}
