@@ -1,58 +1,60 @@
 /* Style for Heading 1 (h1) */
 h1 {
-    margin-top: 25px;
-    font-family: 'Dancing Script', cursive;
-    color: #055052;
-    font-size: 3.125rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Added shadow for a 3D effect (by Kaustubh) */
+  margin-top: 25px;
+  font-family: "Dancing Script", cursive;
+  color: #055052;
+  font-size: 3.125rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Added shadow for a 3D effect (by Kaustubh) */
 }
 
 /* Global body styles */
 body {
-  color: #40514E;
+  color: #40514e;
   text-align: center;
   margin: 0;
-  font-family: 'Merriweather', serif;
-  background-color: #F5F5F5; /* Soft background color to improve readability (by Kaustubh) */
+  font-family: "Merriweather", serif;
+  background-color: #f5f5f5; /* Soft background color to improve readability (by Kaustubh) */
 }
 
- /* Style for Heading 2 (h2) */
+/* Style for Heading 2 (h2) */
 h2 {
   margin-bottom: 40px;
-  font-family: 'Architects Daughter', cursive;
+  font-family: "Architects Daughter", cursive;
   color: #055052;
   font-size: 2rem;
   font-weight: normal;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for h2 (by Kaustubh) */
 }
 
- /* Style for Heading 3 (h3) */
+/* Style for Heading 3 (h3) */
 h3 {
-  color: #8F4F4F;
+  color: #8f4f4f;
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Added shadow for clarity (by Kaustubh) */
 }
 
 /* Image styling for pic1 and pic2 */
-.pic1, .pic2 {
-   width: 25%;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow to images (by Kaustubh) */
+.pic1,
+.pic2 {
+  width: 25%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow to images (by Kaustubh) */
 }
 
 /* Paragraph styling */
 p {
-   line-height: 2;
-   text-align: justify; /* Added text justification for better readability (by Kaustubh) */
+  line-height: 2;
+  text-align: justify; /* Added text justification for better readability (by Kaustubh) */
 }
 
 /* Contact me section */
-.contact-me, .intro {
-   width: 30%;
-   margin: 40px auto 60px;
-   padding: 20px; /* Added padding */
-   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Added shadow to containers (by Kaustubh) */
-   background-color: #FFF; /* Added background color for emphasis */
-   border-radius: 10px; /* Rounded corners for better look (by Kaustubh) */
+.contact-me,
+.intro {
+  width: 30%;
+  margin: 40px auto 60px;
+  padding: 20px; /* Added padding */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Added shadow to containers (by Kaustubh) */
+  background-color: #fff; /* Added background color for emphasis */
+  border-radius: 10px; /* Rounded corners for better look (by Kaustubh) */
 }
 
 /* Skill row */
@@ -62,7 +64,7 @@ p {
   text-align: left;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Added shadow for better separation (by Kaustubh) */
   padding: 20px;
-  background-color: #F9F9F9; /* Soft background for contrast */
+  background-color: #f9f9f9; /* Soft background for contrast */
   border-radius: 8px;
 }
 
@@ -72,7 +74,7 @@ p {
 
 /* Top container with background */
 .top-container {
-  background-color: #FFDCDC;
+  background-color: #ffdcdc;
   position: relative;
   padding: 140px;
   padding-bottom: 0;
@@ -85,7 +87,8 @@ p {
 }
 
 /* Cloud styling */
-.cloud-1, .cloud-2 {
+.cloud-1,
+.cloud-2 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Added shadow to clouds (by Kaustubh) */
   border-radius: 50%;
 }
@@ -97,7 +100,7 @@ p {
 /* Bottom container with padding and background */
 .bottom-container {
   height: 100px;
-  background-color: #FF9292;
+  background-color: #ff9292;
   padding: 50px 0 20px;
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Added top shadow for a lifted effect (by Kaustubh) */
 }
@@ -113,7 +116,7 @@ p {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
-  font-family: 'Architects Daughter', cursive;
+  font-family: "Architects Daughter", cursive;
   color: #ffffff;
   font-size: 20px;
   padding: 10px 20px;
@@ -135,15 +138,15 @@ p {
 /* Copyright section */
 .copyright {
   padding: 20px 0;
-  color: #EAF6F6;
+  color: #eaf6f6;
 }
 
 /* Link styling */
 a {
   margin: 10px 20px;
-  color: #8F4F4F;
+  color: #8f4f4f;
   text-decoration: none;
-  font-family: 'Architects Daughter', cursive;
+  font-family: "Architects Daughter", cursive;
 }
 
 a:hover {
@@ -153,7 +156,7 @@ a:hover {
 
 /* Divider line (hr) */
 hr {
-  border: dotted #EAF6F6 6px;
+  border: dotted #eaf6f6 6px;
   border-bottom: none;
   width: 5%;
   margin: 100px auto;
