@@ -9,6 +9,13 @@ using namespace std;
 // Dijkstra's algorithm using priority_queue (min-heap)
 // Graph represented as adjacency list: vector of (neighbor, weight) pairs
 
+/**
+ * Computes shortest distances from a source vertex to all other vertices using Dijkstra's algorithm.
+ * @param V   Number of vertices in the graph.
+ * @param adj Adjacency list of the graph; adj[u] contains pairs (v, w) for an edge u->v with weight w.
+ * @param src Source vertex index (0-based).
+ * @return    Vector of shortest distances from src to each vertex; INF if unreachable.
+ */
 vector<long long> dijkstra(int V, const vector<vector<pair<int,int>>> &adj, int src) {
 	const long long INF = LLONG_MAX / 4;
 	vector<long long> dist(V, INF);
