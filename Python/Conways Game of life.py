@@ -22,32 +22,32 @@ font = pygame.font.SysFont("consolas", 20, bold=True)
 def gen(num):
     return set((random.randrange(GRID_WIDTH), random.randrange(GRID_HEIGHT)) for _ in range(num))
 
-def get_neighbours(pos):
+def get_neighbors(pos):
     x, y = pos
-    neighbours = []
+    neighbors = []
     for dx in [-1, 0, 1]:
         for dy in [-1, 0, 1]:
             if dx == 0 and dy == 0:
                 continue
             nx, ny = x + dx, y + dy
             if 0 <= nx < GRID_WIDTH and 0 <= ny < GRID_HEIGHT:
-                neighbours.append((nx, ny))
-    return neighbours
+                neighbors.append((nx, ny))
+    return neighbors
 
 def adjust_grid(positions):
-    all_neighbours = set()
+    all_neighbors = set()
     new_positions = set()
 
     for pos in positions:
-        neighbours = get_neighbours(pos)
-        all_neighbours.update(neighbours)
-        live_neighbours = [n for n in neighbours if n in positions]
-        if len(live_neighbours) in [2, 3]:
+        neighbors = get_neighbors(pos)
+        all_neighbors.update(neighbors)
+        live_neighbors = [n for n in neighbors if n in positions]
+        if len(live_neighbors) in [2, 3]:
             new_positions.add(pos)
 
-    for pos in all_neighbours:
-        live_neighbours = [n for n in get_neighbours(pos) if n in positions]
-        if len(live_neighbours) == 3:
+    for pos in all_neighbors:
+        live_neighbors = [n for n in get_neighbors(pos) if n in positions]
+        if len(live_neighbors) == 3:
             new_positions.add(pos)
 
     return new_positions
