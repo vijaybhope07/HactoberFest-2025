@@ -3,9 +3,9 @@ from math import factorial
 lower = int(input("enter starting no :"))
 
 upper = int(input("enter ending no :"))
-y=[]
+y = []
 
-for num in range(lower, upper + 1): 
+for num in range(lower, upper + 1):
     sum = 0
     temp = num
 

@@ -3,6 +3,7 @@ class Node:
         self.val = val
         self.next = None
 
+
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -24,10 +25,11 @@ class LinkedList:
             temp = temp.next
         print("None")
 
+
 def reverse_k_group(head, k):
     """
     Reverses nodes of the linked list in groups of k.
-    If the number of nodes is not a multiple of k, 
+    If the number of nodes is not a multiple of k,
     the remaining nodes at the end stay as is.
     """
     dummy = Node(0)
@@ -39,7 +41,7 @@ def reverse_k_group(head, k):
         for _ in range(k):
             kth_node = kth_node.next
             if not kth_node:
-                return dummy.next 
+                return dummy.next
 
         group_start = prev_group_end.next
         next_group_start = kth_node.next

@@ -3,6 +3,7 @@
 
 from collections import deque, defaultdict
 
+
 class MaxFlow:
     def __init__(self, n):
         self.n = n  # number of nodes
@@ -52,10 +53,11 @@ class MaxFlow:
 
         return max_flow
 
+
 if __name__ == "__main__":
     n = 6  # number of nodes
     mf = MaxFlow(n)
-    
+
     # Example graph (node 0 = source, node 5 = sink)
     mf.add_edge(0, 1, 16)
     mf.add_edge(0, 2, 13)

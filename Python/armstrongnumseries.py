@@ -1,7 +1,7 @@
 lower = int(input("enter starting no :"))
 
 upper = int(input("enter ending no :"))
-y=[]
+y = []
 
 for num in range(lower, upper + 1):
     order = len(str(num))

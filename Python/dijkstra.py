@@ -3,7 +3,9 @@
 import heapq
 from typing import Dict, List, Tuple
 
-def dijkstra(adj: Dict[int, List[Tuple[int,int]]], src: int) -> Dict[int, float]:
+
+def dijkstra(adj: Dict[int, List[Tuple[int, int]]],
+             src: int) -> Dict[int, float]:
     """
     adj: adjacency list {u: [(v, weight), ...], ...}
     src: source node
@@ -22,6 +24,7 @@ def dijkstra(adj: Dict[int, List[Tuple[int,int]]], src: int) -> Dict[int, float]
                 dist[v] = nd
                 heapq.heappush(heap, (nd, v))
     return dist
+
 
 # ---------- Example ----------
 if __name__ == "__main__":

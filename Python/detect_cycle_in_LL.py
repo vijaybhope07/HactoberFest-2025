@@ -3,6 +3,7 @@ class Node:
         self.val = val
         self.next = None
 
+
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -19,7 +20,7 @@ class LinkedList:
 
     def create_cycle(self, pos):
         if pos == -1:
-            return 
+            return
         cycle_node = None
         temp = self.head
         index = 0
@@ -31,7 +32,7 @@ class LinkedList:
             temp = temp.next
             index += 1
         if last and cycle_node:
-            last.next = cycle_node 
+            last.next = cycle_node
 
 
 def is_cycle_found(head):
@@ -43,12 +44,13 @@ def is_cycle_found(head):
             return True
     return False
 
+
 if __name__ == "__main__":
     ll = LinkedList()
     for val in [1, 2, 5, -4]:
         ll.append(val)
 
-    ll.is_cycle_found(1) 
+    ll.is_cycle_found(1)
 
     if has_cycle(ll.head):
         print("Cycle detected")

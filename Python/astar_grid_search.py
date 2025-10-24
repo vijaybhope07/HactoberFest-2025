@@ -1,12 +1,15 @@
 import heapq
 
 # A* Algorithm for shortest path in a grid
+
+
 class AStar:
     def __init__(self, grid):
         self.grid = grid
         self.rows = len(grid)
         self.cols = len(grid[0])
-        self.directions = [(0,1),(1,0),(0,-1),(-1,0)]  # Right, Down, Left, Up
+        self.directions = [(0, 1), (1, 0), (0, -1), (-1, 0)
+                           ]  # Right, Down, Left, Up
 
     def heuristic(self, a, b):
         # Manhattan distance
@@ -21,13 +24,14 @@ class AStar:
         return self.grid[r][c] == 0  # 0 means free cell
 
     def neighbors(self, pos):
-        return [ (r,c) for dr,dc in self.directions if self.in_bounds((r := pos[0]+dr, c := pos[1]+dc)) and self.passable((r,c)) ]
+        return [(r, c) for dr, dc in self.directions if self.in_bounds(
+            (r := pos[0] + dr, c := pos[1] + dc)) and self.passable((r, c))]
 
     def search(self, start, goal):
         open_set = []
         heapq.heappush(open_set, (0, start))
         came_from = {}
-        g_score = {start:0}
+        g_score = {start: 0}
 
         while open_set:
             _, current = heapq.heappop(open_set)
@@ -50,18 +54,19 @@ class AStar:
 
         return None  # no path found
 
+
 if __name__ == "__main__":
     # Example grid: 0 = free, 1 = obstacle
     grid = [
-        [0,0,0,0,1],
-        [1,1,0,1,0],
-        [0,0,0,0,0],
-        [0,1,1,1,0],
-        [0,0,0,0,0]
+        [0, 0, 0, 0, 1],
+        [1, 1, 0, 1, 0],
+        [0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0]
     ]
 
-    start = (0,0)
-    goal = (4,4)
+    start = (0, 0)
+    goal = (4, 4)
 
     astar = AStar(grid)
     path = astar.search(start, goal)

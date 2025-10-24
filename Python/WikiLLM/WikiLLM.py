@@ -9,7 +9,10 @@ from langchain.chains import create_retrieval_chain
 import wikipedia as wiki
 import os
 
-# NOTE: The following function is a RAG template written by me and wasn't copied from anywhere
+# NOTE: The following function is a RAG template written by me and wasn't
+# copied from anywhere
+
+
 def create_RAG_model(url, llm):
     # Create the LLM (Large Language Model)
     llm = Ollama(model=str(llm))
@@ -22,7 +25,10 @@ def create_RAG_model(url, llm):
     text_splitter = RecursiveCharacterTextSplitter()
     split = text_splitter.split_documents(webpage)
     if (os.path.exists("wiki_index")):
-        vector_store = FAISS.load_local("wiki_index", allow_dangerous_deserialization=True, embeddings=embeddings)
+        vector_store = FAISS.load_local(
+            "wiki_index",
+            allow_dangerous_deserialization=True,
+            embeddings=embeddings)
         vector_store = vector_store.from_documents(split, embeddings)
     else:
         vector_store = FAISS.from_documents(split, embeddings)
@@ -31,13 +37,13 @@ def create_RAG_model(url, llm):
 
     # Prompt generation: Giving the LLM character and purpose
     prompt = ChatPromptTemplate.from_template(
-    """
+        """
             Answer the following questions only based on the given context
-                                                    
+
             <context>
             {context}
             </context>
-                                                    
+
             Question: {input}
     """
     )
@@ -47,13 +53,19 @@ def create_RAG_model(url, llm):
     retrieval_chain = create_retrieval_chain(retriever, docs_chain)
     return retrieval_chain
 
-number = int(input("Do you want me to:\n 1) Learn from a single article \n 2) Learn from articles of a given topic\n :"))
+
+number = int(input(
+    "Do you want me to:\n 1) Learn from a single article \n 2) Learn from articles of a given topic\n :"))
 if (number == 2):
     topic = input("What topic to do you want me to learn?: ")
     results = wiki.search(topic)
     for result in results:
-    	wiki_url = str("https://en.wikipedia.org/wiki/"+str(result)).replace(' ','_')
-    	chain = create_RAG_model(wiki_url, "dolphin-phi")
+        wiki_url = str(
+            "https://en.wikipedia.org/wiki/" +
+            str(result)).replace(
+            ' ',
+            '_')
+        chain = create_RAG_model(wiki_url, "dolphin-phi")
 elif (number == 1):
     wiki_url = input("Give me the URL of the article: ")
     chain = create_RAG_model(wiki_url, "dolphin-phi")
@@ -65,5 +77,5 @@ while True:
     if (query == "exit"):
         break
     else:
-        output = chain.invoke({"input":query})
+        output = chain.invoke({"input": query})
         print(output["answer"])

@@ -9,6 +9,8 @@ NUM_THREADS = 100
 port_queue = Queue()
 
 # Function to scan a single port
+
+
 def scan_port(ip, port):
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -20,6 +22,8 @@ def scan_port(ip, port):
         print(f"Error scanning port {port}: {e}")
 
 # Worker function to process ports from the queue
+
+
 def worker(ip):
     while not port_queue.empty():
         port = port_queue.get()  # Get a port from the queue
@@ -27,6 +31,8 @@ def worker(ip):
         port_queue.task_done()  # Mark the task as done
 
 # Main function to set up the scanner
+
+
 def port_scanner(ip, start_port, end_port):
     # Fill the queue with ports to scan
     for port in range(start_port, end_port + 1):
@@ -42,6 +48,7 @@ def port_scanner(ip, start_port, end_port):
     # Wait for all threads to finish
     for thread in threads:
         thread.join()
+
 
 if __name__ == "__main__":
     target_ip = input("Enter the IP address to scan: ")

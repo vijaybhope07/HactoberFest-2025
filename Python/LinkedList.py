@@ -54,4 +54,3 @@ class LinkedList:
 
     def __str__(self):
         return str(self.data) + ', ' + str(self.next)
-

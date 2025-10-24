@@ -1,5 +1,6 @@
 import random
 
+
 def play_game():
     choices = ["snake", "water", "gun"]
     user_choice = input("Enter your choice (snake/water/gun): ").lower()
@@ -26,5 +27,6 @@ def play_game():
             print("You lose! Water rusts the gun.")
     else:
         print("Invalid input. Please choose snake, water, or gun.")
+
 
 play_game()

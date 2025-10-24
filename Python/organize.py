@@ -49,12 +49,14 @@ logging.basicConfig(
 
 # --- Helper Functions ---
 
+
 def get_category_name(extension: str) -> str:
     """Finds the category name for a given file extension."""
     for category, extensions in FILE_CATEGORIES.items():
         if extension in extensions:
             return category
     return OTHER_FOLDER
+
 
 def get_unique_path(destination_path: Path) -> Path:
     """
@@ -78,6 +80,7 @@ def get_unique_path(destination_path: Path) -> Path:
 
 # --- Core Logic ---
 
+
 def organize_directory(target_dir: Path, is_dry_run: bool = False):
     """
     Organizes all files in the target directory.
@@ -98,7 +101,7 @@ def organize_directory(target_dir: Path, is_dry_run: bool = False):
         # Skip directories and hidden files
         if item.is_dir() or item.name.startswith('.'):
             continue
-        
+
         # This is a file we can process
         if item.is_file():
             file_count += 1
@@ -109,7 +112,7 @@ def organize_directory(target_dir: Path, is_dry_run: bool = False):
                 category = OTHER_FOLDER
             else:
                 category = get_category_name(file_ext)
-            
+
             dest_folder = target_dir / category
 
             # 2. Create the destination folder if it doesn't exist
@@ -120,17 +123,19 @@ def organize_directory(target_dir: Path, is_dry_run: bool = False):
                 except OSError as e:
                     logging.error(f"Error creating folder {dest_folder}: {e}")
                     continue
-            
+
             # 3. Handle potential file name collisions
             final_dest_path = get_unique_path(dest_folder / item.name)
 
             # 4. Move the file
             if is_dry_run:
-                logging.info(f"DRY RUN: Would move '{item.name}' -> '{final_dest_path.relative_to(target_dir)}'")
+                logging.info(
+                    f"DRY RUN: Would move '{item.name}' -> '{final_dest_path.relative_to(target_dir)}'")
             else:
                 try:
                     shutil.move(str(item), str(final_dest_path))
-                    logging.info(f"Moved '{item.name}' -> '{final_dest_path.relative_to(target_dir)}'")
+                    logging.info(
+                        f"Moved '{item.name}' -> '{final_dest_path.relative_to(target_dir)}'")
                     moved_count += 1
                 except Exception as e:
                     logging.error(f"Error moving file '{item.name}': {e}")
@@ -145,6 +150,7 @@ def organize_directory(target_dir: Path, is_dry_run: bool = False):
     logging.info("----------------------------\n")
 
 # --- Entry Point ---
+
 
 def main():
     """
@@ -168,11 +174,12 @@ def main():
     )
 
     args = parser.parse_args()
-    
+
     # Convert the string path to a Path object
     target_directory = Path(args.target_dir)
 
     organize_directory(target_directory, args.dry_run)
+
 
 if __name__ == "__main__":
     main()

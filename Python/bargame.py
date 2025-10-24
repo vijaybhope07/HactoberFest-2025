@@ -27,6 +27,8 @@ button_x = random.randint(0, WIDTH - button_width)
 button_y = random.randint(0, HEIGHT - button_height)
 
 # Game loop
+
+
 def game_loop():
     global button_x, button_y
 
@@ -35,7 +37,16 @@ def game_loop():
         screen.fill(BLACK)
         font = pygame.font.Font(None, 74)
         text = font.render(str(countdown), True, RED)
-        screen.blit(text, (WIDTH // 2 - text.get_width() // 2, HEIGHT // 2 - text.get_height() // 2))
+        screen.blit(
+            text,
+            (WIDTH //
+             2 -
+             text.get_width() //
+             2,
+             HEIGHT //
+             2 -
+             text.get_height() //
+             2))
         pygame.display.flip()
         pygame.time.delay(1000)
 
@@ -46,7 +57,13 @@ def game_loop():
         pygame.draw.rect(screen, GREEN, (bar_x, bar_y, bar_width, bar_height))
 
         # Draw the button
-        pygame.draw.rect(screen, RED, (button_x, button_y, button_width, button_height))
+        pygame.draw.rect(
+            screen,
+            RED,
+            (button_x,
+             button_y,
+             button_width,
+             button_height))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -55,7 +72,8 @@ def game_loop():
 
             if event.type == pygame.MOUSEMOTION:
                 mouse_x, mouse_y = event.pos
-                if button_x < mouse_x < button_x + button_width and button_y < mouse_y < button_y + button_height:
+                if button_x < mouse_x < button_x + \
+                        button_width and button_y < mouse_y < button_y + button_height:
                     # If the mouse is over the button, move the button
                     button_x = random.randint(0, WIDTH - button_width)
                     button_y = random.randint(0, HEIGHT - button_height)
@@ -67,6 +85,7 @@ def game_loop():
 
         # Update the display
         pygame.display.flip()
+
 
 # Run the game
 if __name__ == "__main__":

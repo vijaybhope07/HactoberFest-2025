@@ -32,7 +32,8 @@ def merge(arr):
         arr[k] = R[j]
         j += 1
         k += 1
-            # c += 1
+        # c += 1
+
 
 arr = list(map(int, input().split()))
 

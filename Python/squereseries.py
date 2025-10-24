@@ -1,16 +1,16 @@
-n=int(input("Enter Range:"))
+n = int(input("Enter Range:"))
 
-sum=0
+sum = 0
 
-print("Numbers are:",end=" ")
+print("Numbers are:", end=" ")
 
-for i in range(1,n+1):
-    print(i,end=",")
+for i in range(1, n + 1):
+    print(i, end=",")
 
-print("\nSquere are:",end=" ")
+print("\nSquere are:", end=" ")
 
-for i in range(1,n+1):
-    print(i*i,end=",")
-    sum += i*i
+for i in range(1, n + 1):
+    print(i * i, end=",")
+    sum += i * i
 
-print("\nSum of Series:",sum)
+print("\nSum of Series:", sum)
