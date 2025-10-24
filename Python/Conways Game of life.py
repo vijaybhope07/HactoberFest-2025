@@ -53,7 +53,18 @@ def adjust_grid(positions):
     return new_positions
 
 def draw_grid(positions, fade_dict):
-    
+    """
+    Draws the current state of the grid, including live cells and fading recently dead cells.
+
+    Args:
+        positions (set of tuple): Set of (col, row) tuples representing currently alive cells.
+        fade_dict (dict): Dictionary mapping (col, row) tuples to their current fade value (int),
+            used to track and render the fading effect for recently dead cells.
+
+    The function draws live cells in yellow. When a cell dies, it is added to fade_dict and rendered
+    with a decreasing brightness until its fade value reaches zero, at which point it is removed.
+    The grid lines are also drawn.
+    """
     for position in positions:
         col, row = position
         top_left = (col * TILE_SIZE, row * TILE_SIZE)
