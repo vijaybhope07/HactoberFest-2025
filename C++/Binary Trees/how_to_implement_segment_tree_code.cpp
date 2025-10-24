@@ -66,9 +66,9 @@ int constructSTUtil(int arr[], int ss, int se, int *st, int si) {
 
 // Construct segment tree from given array
 int *constructST(int arr[], int n) {
-    if (n <= 0) return nullptr; // Handle empty array case
-    int x = (int)(ceil(log2(n))); // Height of segment tree
-    int max_size = 2 * (int)pow(2, x) - 1; // Maximum size of segment tree
+    if (n <= 0) return nullptr;             // Handle empty array case
+    int x = (int)(ceil(log2(n)));           // Height of segment tree
+    int max_size = 2 * (int)pow(2, x) - 1;  // Maximum size of segment tree
     int *st = new int[max_size];
     constructSTUtil(arr, 0, n - 1, st, 0);
     return st;

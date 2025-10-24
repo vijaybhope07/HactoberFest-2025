@@ -16,12 +16,13 @@ void generatePermutations(string &str, int index) {
         cout << str << endl;
         return;
     }
-    
+
     // Try each character from current index to end
     for (int i = index; i < str.length(); i++) {
-        swap(str[index], str[i]);            // Choose: fix str[i] at position index
-        generatePermutations(str, index + 1); // Explore: recurse for remaining positions
-        swap(str[index], str[i]);            // Backtrack: restore original state
+        swap(str[index], str[i]);  // Choose: fix str[i] at position index
+        generatePermutations(
+            str, index + 1);       // Explore: recurse for remaining positions
+        swap(str[index], str[i]);  // Backtrack: restore original state
     }
 }
 
@@ -29,14 +30,14 @@ int main() {
     string input;
     cout << "Enter a string: ";
     cin >> input;
-    
+
     if (input.empty()) {
         cout << "Empty string has no permutations." << endl;
         return 1;
     }
-    
+
     cout << "All permutations of \"" << input << "\" are:" << endl;
     generatePermutations(input, 0);
-    
+
     return 0;
 }

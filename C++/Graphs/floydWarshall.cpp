@@ -1,37 +1,35 @@
 /*
-        Floyd-Warshall algorithm Simulator for finding the shortest path between all pairs of 
-        nodes in a weighted graph. This algorithm works for both directed and undirected 
-        graphs and can handle negative weights, but it assumes there are no negative weight 
-        cycles.
+        Floyd-Warshall algorithm Simulator for finding the shortest path between
+   all pairs of nodes in a weighted graph. This algorithm works for both
+   directed and undirected graphs and can handle negative weights, but it
+   assumes there are no negative weight cycles.
  */
 
 #include <iostream>
-#include <vector>
 #include <limits>
+#include <vector>
 
 using namespace std;
 
 class Graph {
-public:
+   public:
     Graph(int nodes);
     void addEdge(int u, int v, int weight);
     void floydWarshall();
     void printShortestDistance(int u, int v);
     void printShortestPath(int u, int v);
-    
-private:
+
+   private:
     int numNodes;
     vector<vector<int>> distance;
-    vector<vector<int>> next; // For path reconstruction
+    vector<vector<int>> next;  // For path reconstruction
     const int INF = numeric_limits<int>::max();
 
     void initializeGraph();
 };
 
 // Graph constructor
-Graph::Graph(int nodes) : numNodes(nodes) {
-    initializeGraph();
-}
+Graph::Graph(int nodes) : numNodes(nodes) { initializeGraph(); }
 
 // Initialize the distance and next matrices
 void Graph::initializeGraph() {
@@ -47,7 +45,7 @@ void Graph::initializeGraph() {
 // Add an edge to the graph
 void Graph::addEdge(int u, int v, int weight) {
     distance[u][v] = weight;
-    next[u][v] = v; // For reconstructing the path
+    next[u][v] = v;  // For reconstructing the path
 }
 
 // Floyd-Warshall algorithm
@@ -70,7 +68,8 @@ void Graph::printShortestDistance(int u, int v) {
     if (distance[u][v] == INF) {
         cout << "No path from node " << u << " to node " << v << endl;
     } else {
-        cout << "Shortest distance from node " << u << " to node " << v << ": " << distance[u][v] << endl;
+        cout << "Shortest distance from node " << u << " to node " << v << ": "
+             << distance[u][v] << endl;
     }
 }
 

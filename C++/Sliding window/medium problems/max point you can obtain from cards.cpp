@@ -1,5 +1,5 @@
 class Solution {
-public:
+   public:
     int maxScore(vector<int>& cardPoints, int k) {
         int n = cardPoints.size();
         int s = accumulate(cardPoints.end() - k, cardPoints.end(), 0);

@@ -2,23 +2,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 // } Driver Code Ends
 // User function template for C++
 class Solution {
-  public:
+   public:
     // Returns count buildings that can see sunlight
     int countBuildings(vector<int> &height) {
         // code here
         int count = 0;
         int max = 0;
-       for(int i=0;i < (height.size()) ; i++){
-           if(max < height[i]){
-               count++;
-               max = height[i];
-           }
-       }
-       return count;
+        for (int i = 0; i < (height.size()); i++) {
+            if (max < height[i]) {
+                count++;
+                max = height[i];
+            }
+        }
+        return count;
     }
 };
 

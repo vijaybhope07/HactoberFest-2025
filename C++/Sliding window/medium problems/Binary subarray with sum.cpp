@@ -1,5 +1,5 @@
 class Solution {
-public:
+   public:
     int numSubarraysWithSum(vector<int>& nums, int goal) {
         int cnt[nums.size() + 1];
         memset(cnt, 0, sizeof cnt);

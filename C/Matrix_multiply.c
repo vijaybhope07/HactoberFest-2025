@@ -58,7 +58,7 @@ int main() {
     // Performing matrix multiplication
     for (int i = 0; i < r1; i++) {
         for (int j = 0; j < c2; j++) {
-            result[i][j] = 0; // Initialize result matrix element
+            result[i][j] = 0;  // Initialize result matrix element
             for (int k = 0; k < c1; k++) {
                 result[i][j] += matrix1[i][k] * matrix2[k][j];
             }

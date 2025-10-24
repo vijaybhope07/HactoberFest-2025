@@ -2,30 +2,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 // } Driver Code Ends
 
 class Solution {
-  public:
+   public:
     int rotateDelete(vector<int> &arr) {
         // Your code here
-        deque<int>dq(arr.begin(),arr.end());
-        int k=1;
-        int n=arr.size();
-        
-            while(k<=dq.size()){
-                int a=dq[dq.size()-1];
-                dq.pop_back();
-                dq.push_front(a);
-                int b=dq.size()-k;
-                dq.erase(dq.begin()+b);
-                k++;
-            }
-                   
-                   return dq[0];
+        deque<int> dq(arr.begin(), arr.end());
+        int k = 1;
+        int n = arr.size();
+
+        while (k <= dq.size()) {
+            int a = dq[dq.size() - 1];
+            dq.pop_back();
+            dq.push_front(a);
+            int b = dq.size() - k;
+            dq.erase(dq.begin() + b);
+            k++;
+        }
+
+        return dq[0];
     }
 };
-
 
 //{ Driver Code Starts.
 

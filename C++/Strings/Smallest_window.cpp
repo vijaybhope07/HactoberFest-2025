@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string smallestWindow(string s, string p){
+string smallestWindow(string s, string p) {
     vector<int> mp(26, 0);
     int n = s.length();
     int m = p.length();
@@ -12,16 +12,16 @@ string smallestWindow(string s, string p){
     int mini = 1e9;
     int stI = -1;
     for (int i = 0; i < m; i++) mp[p[i] - 'a']++;
-    while (l < n && r < n){
+    while (l < n && r < n) {
         if (mp[s[r] - 'a'] > 0) cnt++;
         mp[s[r] - 'a']--;
-        while (cnt == m){
-            if (r - l + 1 < mini){
+        while (cnt == m) {
+            if (r - l + 1 < mini) {
                 mini = r - l + 1;
                 stI = l;
             }
             mp[s[l] - 'a']++;
-            if (mp[s[l] - 'a'] > 0){
+            if (mp[s[l] - 'a'] > 0) {
                 cnt--;
             }
             l++;
@@ -33,7 +33,7 @@ string smallestWindow(string s, string p){
     return ans;
 }
 
-int main(){
+int main() {
     string s = "timetopractice";
     string p = "toc";
     string res = smallestWindow(s, p);

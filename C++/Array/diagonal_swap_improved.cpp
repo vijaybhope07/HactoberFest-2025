@@ -30,9 +30,9 @@ int main() {
 
     // Interchange diagonals
     for (int i = 0; i < n; i++) {
-        int temp = matrix[i][i];               // Primary diagonal element
-        matrix[i][i] = matrix[i][n - 1 - i];   // Replace with secondary diagonal
-        matrix[i][n - 1 - i] = temp;           // Replace secondary with primary
+        int temp = matrix[i][i];              // Primary diagonal element
+        matrix[i][i] = matrix[i][n - 1 - i];  // Replace with secondary diagonal
+        matrix[i][n - 1 - i] = temp;          // Replace secondary with primary
     }
 
     // Output modified matrix

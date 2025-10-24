@@ -1,17 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool isValid(string s){
+bool isValid(string s) {
     stack<int> st;
-    for (char ch : s){
-        if (ch == '(' || ch == '[' || ch == '{'){
+    for (char ch : s) {
+        if (ch == '(' || ch == '[' || ch == '{') {
             st.push(ch);
-        }
-        else{
+        } else {
             if (st.empty()) return false;
             if ((ch == ')' && st.top() != '(') ||
                 (ch == ']' && st.top() != '[') ||
-                (ch == '}' && st.top() != '{')){
+                (ch == '}' && st.top() != '{')) {
                 return false;
             }
             st.pop();
@@ -20,12 +19,11 @@ bool isValid(string s){
     return st.empty();
 }
 
-int main(){
+int main() {
     string s = "()[]{}";
-    if (isValid(s)){
+    if (isValid(s)) {
         cout << "true" << endl;
-    }
-    else{
+    } else {
         cout << "false" << endl;
     }
     return 0;

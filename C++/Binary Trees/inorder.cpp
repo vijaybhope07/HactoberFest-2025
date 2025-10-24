@@ -2,7 +2,7 @@
 using namespace std;
 
 class TreeNode {
-public:
+   public:
     int val;
     TreeNode* left;
     TreeNode* right;
@@ -11,9 +11,9 @@ public:
 
 void inorderTraversal(TreeNode* root) {
     if (root) {
-        inorderTraversal(root->left); 
-        cout << root->val << " "; 
-        inorderTraversal(root->right); 
+        inorderTraversal(root->left);
+        cout << root->val << " ";
+        inorderTraversal(root->right);
     }
 }
 
@@ -28,7 +28,6 @@ int main() {
     cout << "In-order traversal: ";
     inorderTraversal(root);
     cout << endl;
-
 
     return 0;
 }

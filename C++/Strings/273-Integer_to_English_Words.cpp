@@ -4,8 +4,7 @@ using namespace std;
 string numberToWordsHelper(int num);
 
 string numberToWords(int num) {
-    if (num == 0)
-        return "Zero";
+    if (num == 0) return "Zero";
 
     string bigString[] = {"Thousand", "Million", "Billion"};
     string result = numberToWordsHelper(num % 1000);
@@ -13,21 +12,24 @@ string numberToWords(int num) {
 
     for (int i = 0; i < 3; ++i) {
         if (num > 0 && num % 1000 > 0) {
-            result = numberToWordsHelper(num % 1000) + bigString[i] + " " + result;
+            result =
+                numberToWordsHelper(num % 1000) + bigString[i] + " " + result;
         }
         num /= 1000;
     }
 
-    return result.empty() ? result : result.substr(0, result.size() - 1); // Trim trailing space
+    return result.empty()
+               ? result
+               : result.substr(0, result.size() - 1);  // Trim trailing space
 }
 
 string numberToWordsHelper(int num) {
     string digitString[] = {"Zero", "One", "Two",   "Three", "Four",
                             "Five", "Six", "Seven", "Eight", "Nine"};
-    string teenString[] = {"Ten", "Eleven",  "Twelve",  "Thirteen",
+    string teenString[] = {"Ten",      "Eleven",  "Twelve",  "Thirteen",
                            "Fourteen", "Fifteen", "Sixteen", "Seventeen",
                            "Eighteen", "Nineteen"};
-    string tenString[] = {"", "", "Twenty",  "Thirty", "Forty",
+    string tenString[] = {"",      "",      "Twenty",  "Thirty", "Forty",
                           "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
 
     string result = "";
@@ -52,6 +54,8 @@ string numberToWordsHelper(int num) {
 
 int main() {
     int num = 1234567;
-    cout << numberToWords(num) << endl;  // Output: "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
+    cout << numberToWords(num)
+         << endl;  // Output: "One Million Two Hundred Thirty Four Thousand Five
+                   // Hundred Sixty Seven"
     return 0;
 }

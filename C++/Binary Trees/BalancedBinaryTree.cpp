@@ -1,6 +1,5 @@
-//Check if the Binary Tree is Balanced Binary Tree
+// Check if the Binary Tree is Balanced Binary Tree
 
-                                
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,12 +9,11 @@ struct Node {
     Node* left;
     Node* right;
 
-    Node(int val) : data(val), left(nullptr), right(nullptr) {}     // Constructor
+    Node(int val) : data(val), left(nullptr), right(nullptr) {}  // Constructor
 };
 
 class Solution {
-
-public:
+   public:
     // Function to check if a binary tree is balanced
     bool isBalanced(Node* root) {
         // Check if the tree's height difference between subtrees is less than 2
@@ -25,37 +23,34 @@ public:
 
     // Recursive function to calculate the height of the tree
     int dfsHeight(Node* root) {
-        // Base case: if the current node is NULL, return 0 (height of an empty tree)
+        // Base case: if the current node is NULL, return 0 (height of an empty
+        // tree)
         if (root == NULL) return 0;
 
         // Recursively calculate the height of the left subtree
         int leftHeight = dfsHeight(root->left);
 
         // If the left subtree is unbalanced, propagate the unbalance status
-        if (leftHeight == -1) 
-            return -1;
+        if (leftHeight == -1) return -1;
 
         // Recursively calculate the height of the right subtree
         int rightHeight = dfsHeight(root->right);
 
         // If the right subtree is unbalanced, propagate the unbalance status
-        if (rightHeight == -1) 
-            return -1;
+        if (rightHeight == -1) return -1;
 
-        // Check if the difference in height between left and right subtrees is greater than 1
-        // If it's greater, the tree is unbalanced, return -1 to propagate the unbalance status
-        if (abs(leftHeight - rightHeight) > 1)  
-            return -1;
+        // Check if the difference in height between left and right subtrees is
+        // greater than 1 If it's greater, the tree is unbalanced, return -1 to
+        // propagate the unbalance status
+        if (abs(leftHeight - rightHeight) > 1) return -1;
 
-        // Return the maximum height of left and right subtrees, adding 1 for the current node
+        // Return the maximum height of left and right subtrees, adding 1 for
+        // the current node
         return max(leftHeight, rightHeight) + 1;
     }
 };
 
-
-
 int main() {
-
     // Creating a sample binary tree
     Node* root = new Node(1);
     root->left = new Node(2);
@@ -71,12 +66,10 @@ int main() {
     // Checking if the tree is balanced
     if (solution.isBalanced(root)) {
         cout << "The tree is balanced." << endl;
-    } 
-    else {
+    } else {
         cout << "The tree is not balanced." << endl;
     }
-
 }
-                                
+
 //  Time Complexity : O(n)
 // Space Complexity : O(1)

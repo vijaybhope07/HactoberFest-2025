@@ -28,27 +28,26 @@ int main() {
         }
     }
 
-    
     if (row1 != row || col1 != col) {
         cout << "\nMatrices are not identical." << endl;
     } else {
-        bool identical = true; 
+        bool identical = true;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (arr[i][j] != arr1[i][j]) {
-                    identical = false; 
+                    identical = false;
                     break;
                 }
             }
-            if (!identical) break; 
+            if (!identical) break;
 
-        if (identical) {
-            cout << "\nMatrices are identical." << endl;
-        } else {
-            cout << "\nMatrices are not identical." << endl;
+            if (identical) {
+                cout << "\nMatrices are identical." << endl;
+            } else {
+                cout << "\nMatrices are not identical." << endl;
+            }
         }
-    }
 
-    return 0;
-}
+        return 0;
+    }
 }

@@ -4,7 +4,7 @@
 using namespace std;
 
 class Solution {
-public:
+   public:
     int maxFrequency(vector<int>& nums, int k, int numOperations) {
         sort(nums.begin(), nums.end());
 

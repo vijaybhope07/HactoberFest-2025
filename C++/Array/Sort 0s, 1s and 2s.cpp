@@ -2,25 +2,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 // } Driver Code Ends
 class Solution {
-  public:
+   public:
     void sort012(vector<int>& arr) {
         // code here
         int low = 0, mid = 0, high = arr.size() - 1;
-        while(mid <= high){
-            if( arr[mid] == 0){
+        while (mid <= high) {
+            if (arr[mid] == 0) {
                 arr[mid] = arr[low];
                 arr[low] = 0;
                 low++;
                 mid++;
-            }
-            else if(arr[mid]== 2){
+            } else if (arr[mid] == 2) {
                 arr[mid] = arr[high];
                 arr[high] = 2;
                 high--;
-            }else{
+            } else {
                 mid++;
             }
         }
@@ -29,12 +27,10 @@ class Solution {
 
 //{ Driver Code Starts.
 int main() {
-
     int t;
     cin >> t;
     cin.ignore();
     while (t--) {
-
         vector<int> a;
         string input;
         int num;

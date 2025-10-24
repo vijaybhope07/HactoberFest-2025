@@ -3,19 +3,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 // } Driver Code Ends
 
 class Solution {
-  public:
+   public:
     int pairsum(vector<int> &arr) {
         // code here
-        sort(arr.begin(),arr.end());
+        sort(arr.begin(), arr.end());
         int n = arr.size();
-        return arr[n-2] + arr[n-1];
+        return arr[n - 2] + arr[n - 1];
     }
 };
-
 
 //{ Driver Code Starts.
 int main() {

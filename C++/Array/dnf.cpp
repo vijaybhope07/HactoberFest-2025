@@ -5,9 +5,9 @@
 using namespace std;
 
 void dutchNationalFlagSort(vector<int>& a) {
-    int low = 0;                 // boundary for 0s
-    int mid = 0;                 // current element
-    int high = (int)a.size() - 1; // boundary for 2s
+    int low = 0;                   // boundary for 0s
+    int mid = 0;                   // current element
+    int high = (int)a.size() - 1;  // boundary for 2s
 
     while (mid <= high) {
         if (a[mid] == 0) {
@@ -16,10 +16,11 @@ void dutchNationalFlagSort(vector<int>& a) {
             mid++;
         } else if (a[mid] == 1) {
             mid++;
-        } else { // a[mid] == 2
+        } else {  // a[mid] == 2
             swap(a[mid], a[high]);
             high--;
-            // do not increment mid here because swapped element must be examined
+            // do not increment mid here because swapped element must be
+            // examined
         }
     }
 }
